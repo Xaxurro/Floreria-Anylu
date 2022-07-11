@@ -1,5 +1,5 @@
 <?php
-include("conn.php");
+include("connection.php");
 
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ include("conn.php");
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="#catalogo">Catalogo</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                    <li><a href="#about">Acerca de</a></li>
+                    <li><a href="#login">Iniciar Sesión</a></li>
                 </ul>
             </nav>
         </div>
