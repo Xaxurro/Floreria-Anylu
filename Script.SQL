@@ -1,5 +1,5 @@
 CREATE TABLE producto(
-    id_producto number(5),
+    id_producto number(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_producto varchar(50),
     descripcion_producto varchar(250),
     stock_producto number(4),
