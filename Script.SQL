@@ -11,6 +11,12 @@ CREATE TABLE product(
     estado int(1)
 );
 
+CREATE TABLE photo(
+    id_foto int(4),
+    id_producto int(5),
+    foto blob
+)
+
 CREATE TABLE user(
     rut_usuario varchar(12),
     nombre varchar(50),
@@ -42,6 +48,9 @@ CREATE TABLE admin(
 ALTER TABLE product
 ADD CONSTRAINT PK_product PRIMARY KEY (id_producto);
 
+ALTER TABLE photo
+ADD CONSTRAINT PK_photo PRIMARY KEY (id_foto);
+
 ALTER TABLE user
 ADD CONSTRAINT PK_user PRIMARY KEY (rut_usuario);
 
@@ -60,6 +69,9 @@ ADD CONSTRAINT PK_cart_user_order FOREIGN KEY (id_producto) REFERENCES product(i
 
 ALTER TABLE user_order
 ADD CONSTRAINT PK_user_order_cart FOREIGN KEY (id_carrito) REFERENCES cart(id_carrito);
+
+ALTER TABLE photo
+ADD CONSTRAINT PK_photo_product FOREIGN KEY (id_producto) REFERENCES product(id_producto);
 
 ALTER TABLE user_order
 ADD CONSTRAINT PK_user_order_user FOREIGN KEY (rut_usuario) REFERENCES user(rut_usuario);
