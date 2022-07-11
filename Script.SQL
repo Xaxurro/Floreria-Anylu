@@ -26,7 +26,7 @@ CREATE TABLE cart(
     cantidad int(3)
 );
 
-CREATE TABLE order(
+CREATE TABLE user_order(
     id_orden int(7),
     id_carrito int(7),
     rut_usuario varchar(12)
