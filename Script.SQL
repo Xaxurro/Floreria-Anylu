@@ -32,6 +32,12 @@ CREATE TABLE user_order(
     rut_usuario varchar(12)
 );
 
+CREATE TABLE admin(
+    id_admin int(3),
+    username_admin varchar(30),
+    password_admin varchar(50)
+);
+
 
 ALTER TABLE product
 ADD CONSTRAINT PK_product PRIMARY KEY (id_producto);
@@ -45,6 +51,15 @@ ADD CONSTRAINT PK_cart PRIMARY KEY (id_carrito, id_producto);
 ALTER TABLE user_order
 ADD CONSTRAINT PK_user_order PRIMARY KEY (id_orden);
 
+ALTER TABLE admin
+ADD CONSTRAINT PK_admin PRIMARY KEY (id_admin);
+
 
 ALTER TABLE cart
-ADD CONSTRAINT PK_user_order FOREIGN KEY (id_producto) REFERENCES product(id_producto);
+ADD CONSTRAINT PK_cart_user_order FOREIGN KEY (id_producto) REFERENCES product(id_producto);
+
+ALTER TABLE user_order
+ADD CONSTRAINT PK_user_order_cart FOREIGN KEY (id_carrito) REFERENCES cart(id_carrito);
+
+ALTER TABLE user_order
+ADD CONSTRAINT PK_user_order_user FOREIGN KEY (rut_usuario) REFERENCES user(rut_usuario);
