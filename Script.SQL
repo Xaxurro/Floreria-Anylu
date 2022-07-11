@@ -29,5 +29,5 @@ CREATE TABLE cart(
 CREATE TABLE order(
     id_orden number(7),
     rut varchar(12),
-    id_carrito
+    id_carrito number(7)
 );
