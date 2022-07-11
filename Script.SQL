@@ -12,7 +12,7 @@ CREATE TABLE product(
 );
 
 CREATE TABLE user(
-    rut varchar(12),
+    rut_usuario varchar(12),
     nombre varchar(50),
     apellido varchar(50),
     correo nvarchar(255),
@@ -31,3 +31,20 @@ CREATE TABLE order(
     rut varchar(12),
     id_carrito number(7)
 );
+
+
+ALTER TABLE product
+ADD CONSTRAINT PK_product PRIMARY KEY (id_producto);
+
+ALTER TABLE user
+ADD CONSTRAINT PK_user PRIMARY KEY (rut_usuario);
+
+ALTER TABLE cart
+ADD CONSTRAINT PK_cart PRIMARY KEY (id_carrito, id_producto);
+
+ALTER TABLE order
+ADD CONSTRAINT PK_order PRIMARY KEY (id_orden);
+
+
+ALTER TABLE cart
+ADD CONSTRAINT PK_order FOREIGN KEY (id_producto) REFERENCES product(id_producto);
