@@ -1,3 +1,7 @@
+CREATE DATABASE FLORERIA;
+
+USE FLORERIA;
+
 CREATE TABLE product(
     id_producto number(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre_producto varchar(50),
