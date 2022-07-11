@@ -42,9 +42,9 @@ ADD CONSTRAINT PK_user PRIMARY KEY (rut_usuario);
 ALTER TABLE cart
 ADD CONSTRAINT PK_cart PRIMARY KEY (id_carrito, id_producto);
 
-ALTER TABLE order
-ADD CONSTRAINT PK_order PRIMARY KEY (id_orden);
+ALTER TABLE user_order
+ADD CONSTRAINT PK_user_order PRIMARY KEY (id_orden);
 
 
 ALTER TABLE cart
-ADD CONSTRAINT PK_order FOREIGN KEY (id_producto) REFERENCES product(id_producto);
+ADD CONSTRAINT PK_user_order FOREIGN KEY (id_producto) REFERENCES product(id_producto);
