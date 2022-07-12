@@ -17,7 +17,7 @@ CREATE TABLE photo(
     foto blob
 );
 
-CREATE TABLE user(
+CREATE TABLE usuario(
     rut_usuario varchar(12),
     nombre varchar(50),
     apellido varchar(50),
@@ -51,7 +51,7 @@ ADD CONSTRAINT PK_product PRIMARY KEY (id_producto);
 ALTER TABLE photo
 ADD CONSTRAINT PK_photo PRIMARY KEY (id_foto);
 
-ALTER TABLE user
+ALTER TABLE usuario
 ADD CONSTRAINT PK_user PRIMARY KEY (rut_usuario);
 
 ALTER TABLE cart
@@ -74,4 +74,4 @@ ALTER TABLE photo
 ADD CONSTRAINT PK_photo_product FOREIGN KEY (id_producto) REFERENCES product(id_producto);
 
 ALTER TABLE user_order
-ADD CONSTRAINT PK_user_order_user FOREIGN KEY (rut_usuario) REFERENCES user(rut_usuario);
+ADD CONSTRAINT PK_user_order_user FOREIGN KEY (rut_usuario) REFERENCES usuario(rut_usuario);
