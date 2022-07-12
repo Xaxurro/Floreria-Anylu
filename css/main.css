@@ -19,12 +19,13 @@ header{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(17.3px);
     -webkit-backdrop-filter: blur(17.3px);
-    border: 1px solid rgba(252, 171, 240, 0.57);
+    border: 1px solid #ff9cdb;
 }
 #header{
     width: 100%;
     margin: auto;
     box-sizing: border-box;
+    padding-top: 50%;
 }
 #logo{
     float: left;
