@@ -91,7 +91,7 @@ echo $_SERVER['SCRIPT_NAME'];
         switch($opcion){
             case "A":
                 $sql = "INSERT INTO product (nombre_producto, descripcion_producto, stock_producto, precio_producto, estado) VALUES ('$nombre', '$descripcion', $stock, $precio, 1);";
-                if(mysqli_query($con, $sql)){
+                if($con->query($sql)){
                     echo "Se inserto Correctamente<br><br>";
                 } else {
                     echo "No se inserto<br><br>";
@@ -101,7 +101,7 @@ echo $_SERVER['SCRIPT_NAME'];
 
             case "M":
                 $sql = "UPDATE product SET nombre_producto = '$nombre', descripcion_producto = '$descripcion', stock_producto = '$stock', precio_producto = '$precio' WHERE id_producto = '$id';";
-                if(mysqli_query($con, $sql)){
+                if($con->query($sql)){
                     echo "Se elimino Correctamente<br><br>";
                 } else {
                     echo "No se elimino<br><br>";
