@@ -8,6 +8,6 @@ if($_GET){
         echo "No se modifico<br><br>";
     }
     $con->close();
-    header("Location: ".$_SERVER['HTTP_REFERER']."/crud/crud.php");
+    header("Location: ".$_SERVER['HTTP_REFERER']."/admin/crud.php");
 }
 ?>
