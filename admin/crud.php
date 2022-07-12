@@ -1,5 +1,5 @@
 <?php
-    include("./controller/connection.php");
+    include("../controller/connection.php");
     if($_POST){
         $id = $_POST["id"];
         $nombre = $_POST["nombre"];
@@ -19,19 +19,6 @@
     <title>Modificar Base de Datos</title>
 </head>
 <body>
-<?php
-echo $_SERVER['PHP_SELF'];
-echo "<br>";
-echo $_SERVER['SERVER_NAME'];
-echo "<br>";
-echo $_SERVER['HTTP_HOST'];
-echo "<br>";
-echo $_SERVER['HTTP_REFERER'];
-echo "<br>";
-echo $_SERVER['HTTP_USER_AGENT'];
-echo "<br>";
-echo $_SERVER['SCRIPT_NAME'];
-?>
     <form action="crud.php" method="post">
         <label for="id">Id: </label>
         <input type="text" name="id" id="id" placeholder="Id"><br><br>
