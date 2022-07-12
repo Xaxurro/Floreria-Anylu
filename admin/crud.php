@@ -41,6 +41,7 @@
 
     <table>
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Stock</th>
@@ -50,9 +51,9 @@
         </tr>
         <?php
         $sql = "SELECT * FROM product;";
-        $result = mysqli_query($con, $sql);
-        if(mysqli_num_rows($result) > 0){
-            while ($row = mysqli_fetch_assoc($result)) {
+        $result = $con->query($sql);
+        if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()) {
                 echo "
                 <tr>
                     <td>".$row["id_producto"]."</td>
@@ -62,7 +63,7 @@
                     <td>".$row["precio_producto"]."</td>
                     <td>".$row["estado"]."</td>
                     <td>
-                    <a href='delete.php?id=".$row["id_producto"].">Eliminar</a>
+                    <a href='delete.php?id=".$row["id_producto"]."'>Eliminar</a>
                     </td>
                 </tr>
                 ";
@@ -81,7 +82,7 @@
                 } else {
                     echo "No se inserto<br><br>";
                 }
-                mysqli_close($con);
+                $con->close();
                 break;
 
             case "M":
@@ -91,7 +92,7 @@
                 } else {
                     echo "No se elimino<br><br>";
                 }
-                mysqli_close($con);
+                $con->close();
                 break;
         }
     }
