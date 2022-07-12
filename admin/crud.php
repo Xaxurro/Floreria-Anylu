@@ -63,8 +63,7 @@
                     <td>".$row["precio_producto"]."</td>
                     <td>".$row["estado"]."</td>
                     <td>
-                    <button type='submit' name='opcion' value='M'>Modificar</button>
-                    <a href='delete.php?id=".$row["id"].">Eliminar</a>
+                    <a href='delete.php?id=".$row["id_producto"]."'>Eliminar</a>
                     </td>
                 </tr>
                 ";
