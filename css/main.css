@@ -1,46 +1,45 @@
-/* *{
+*{
     margin: 0%;
     padding: 0%;
-} 
+}
 body{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    /* font-family: Arial, Helvetica, sans-serif; */
-    /* background-color: rgb(250, 219, 250); 
+    font-family: Arial, Helvetica, sans-serif;
+    /* background-color: rgb(250, 219, 250); */
     background-color: white;
 }
-/*-------------------------------- HEADER ---------------------------
+/*-------------------------------- HEADER ---------------------------*/
 header{
     max-width: 960px;
     margin: auto;
-    overflow: hidden;/*para poder ocupar el float y mover los contenedores 
+    overflow: hidden;/*para poder ocupar el float y mover los contenedores */
     margin-bottom:10px;
-    /* margin-top: 10px; 
+    margin-top: 10px;
     background: rgba(252, 171, 240, 0.47);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(17.3px);
-    -webkit-backdrop-filter: blur(17.3px);
+    /* -webkit-backdrop-filter: blur(17.3px); */
     border: 1px solid #ff9cdb;
 }
-/* #header{
+#header{
     width: 100%;
     margin: auto;
     box-sizing: border-box;
-     padding-top: 50%; 
-} 
+    /* padding-top: 50%; */
+}
 #logo{
     float: left;
     width: 1%;
-    /* padding: 10px 10px; 
+    padding: 10px 10px;
     box-sizing: border-box;
-    /* background-image: ./src/logo.png; 
-    /* background-image: url("http://localhost/Floreria-Anylu/src/logo.png") 
+    /* background-image: ./src/logo.png; */
+    /* background-image: url("http://localhost/Floreria-Anylu/src/logo.png") */
 
 }
-/* #logo .img{
+#logo .img{
     width: 4px;
     height: 4px;
-} 
+}
 a{
     text-decoration: none;
     color: black;
@@ -48,33 +47,33 @@ a{
 header #header nav{
     float: right;
     width: 60%;
-    /* padding: 30px 0px; 
+    /* padding: 30px 0px; */
     text-align: center;
-    /* padding-top: 50%; 
+    padding-top: 5%;
 }
 header #header nav ul{
     font-size: xx-large;
-    /* padding-top: 50%; 
+    /* padding-top: 50%; */
 }
-/* header #header nav ul li{
+header #header nav ul li{
     display: inline;
 }
 header #header nav ul li{
     color:  rgb(240, 46, 240);
     font-size: 20px;
-    /* padding: 10px; 
+    padding: 10px;
 }
 header #header nav ul li a:hover{
     color: grey;
-    /* background:  rgb(255, 255, 255); 
+    /* background:  rgb(255, 255, 255); */
     border-radius: 5px;
-} */
+}
 /* -------------------body------------------------------------- */
-/* #cuerpo{
+#cuerpo{
     max-width: 960px;
     margin: auto;
     background: rgb(255, 255, 255);
     clear: both;
     overflow: hidden;
-} */
+}
 /* -------------------Footer------------------------------------- */
