@@ -54,6 +54,7 @@ echo $_SERVER['SCRIPT_NAME'];
 
     <table>
         <tr>
+            <th>ID</th>
             <th>Nombre</th>
             <th>Descripcion</th>
             <th>Stock</th>
@@ -63,9 +64,9 @@ echo $_SERVER['SCRIPT_NAME'];
         </tr>
         <?php
         $sql = "SELECT * FROM product;";
-        $result = mysqli_query($con, $sql);
-        if(mysqli_num_rows($result) > 0){
-            while ($row = mysqli_fetch_assoc($result)) {
+        $result = $con->query($sql);
+        if($result->num_rows > 0){
+            while ($row = $result->fetch_assoc()) {
                 echo "
                 <tr>
                     <td>".$row["id_producto"]."</td>
@@ -95,7 +96,7 @@ echo $_SERVER['SCRIPT_NAME'];
                 } else {
                     echo "No se inserto<br><br>";
                 }
-                mysqli_close($con);
+                $con->close();
                 break;
 
             case "M":
@@ -105,7 +106,7 @@ echo $_SERVER['SCRIPT_NAME'];
                 } else {
                     echo "No se elimino<br><br>";
                 }
-                mysqli_close($con);
+                $con->close();
                 break;
         }
     }
