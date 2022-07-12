@@ -30,6 +30,7 @@ include("connection.php");
 
     <section id="cuerpo">
         <a>asd</a>
+        <img src="./src/daniel-lopez.png" alt="peruano1">
 
     </section>
 

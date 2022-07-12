@@ -4,17 +4,22 @@
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(250, 219, 250);
+    /* background-color: rgb(250, 219, 250); */
+    background-color: white;
 }
 /*-------------------------------- HEADER ---------------------------*/
 header{
     max-width: 960px;
     margin: auto;
-    background:  rgb(231, 139, 231);/*mismo color para el contenido del header*/ 
-    overflow: hidden;/*para poder ocupar el float y mover los contenedores*/
+    overflow: hidden;/*para poder ocupar el float y mover los contenedores */
     margin-bottom:10px;
     margin-top: 10px;
-    border-radius: 10px;
+    background: rgba(252, 171, 240, 0.47);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.3px);
+    -webkit-backdrop-filter: blur(17.3px);
+    border: 1px solid rgba(252, 171, 240, 0.57);
 }
 #header{
     width: 100%;
