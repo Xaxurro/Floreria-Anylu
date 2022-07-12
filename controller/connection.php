@@ -1,14 +1,8 @@
 <?php
-$json = file_get_contents('connection.json');
-$data = json_decode($json,true);
-
-foreach($data as $row){
-    $dir=$row['dir'];
-    $user=$row['user'];
-    $password=$row['password'];
-    $db=$row['db'];
-}
-
+$dir="localhost";
+$user="root";
+$password="";
+$db="floreria";
 
 $con = mysqli_connect($dir,$user,$password,$db);
 
