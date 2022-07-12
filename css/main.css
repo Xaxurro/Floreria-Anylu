@@ -25,7 +25,7 @@ header{
     width: 100%;
     margin: auto;
     box-sizing: border-box;
-    padding-top: 50%;
+    /* padding-top: 50%; */
 }
 #logo{
     float: left;
@@ -33,7 +33,7 @@ header{
     padding: 10px 10px;
     box-sizing: border-box;
     /* background-image: ./src/logo.png; */
-    background-image: url("http://localhost/Floreria-Anylu/src/logo.png")
+    /* background-image: url("http://localhost/Floreria-Anylu/src/logo.png") */
 
 }
 /* #logo .img{
@@ -47,11 +47,13 @@ a{
 header #header nav{
     float: right;
     width: 60%;
-    padding: 30px 0px;
+    /* padding: 30px 0px; */
     text-align: center;
+    padding-top: 50%;
 }
 header #header nav ul{
     font-size: xx-large;
+    padding-top: 50%;
 }
 header #header nav ul li{
     display: inline;
