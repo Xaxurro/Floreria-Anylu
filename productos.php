@@ -1,6 +1,5 @@
 <?php
-include("./connection.php");
-include ("./header.php");
+include("connection.php");
 
 ?>
 <!DOCTYPE html>
@@ -13,30 +12,16 @@ include ("./header.php");
     <title>Floreria Anylu</title>
 </head>
 <body>
-    <header>
+<header>
         <div id="header">
-            <div id="logo">
-                <img class="logo" src="src/logo.png" alt="Logo">
-            </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="#catalogo">Catalogo</a></li>
                     <li><a href="#contact">Contacto</a></li>
-                    <li><a href="#login">Iniciar Sesión</a></li>
+                    <li><a href="#about">Acerca de</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-
-    <section id="cuerpo">
-        <a></a>
-        <img src="./src/daniel-lopez.png" alt="peruano1">
-
-    </section>
-
-    <footer>
-        PROGRAMACION ORIENTADA A LA WEB 2022
-    </footer>
 </body>
-</html>

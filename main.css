@@ -4,17 +4,22 @@
 }
 body{
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(250, 219, 250);
+    /* background-color: rgb(250, 219, 250); */
+    background-color: white;
 }
 /*-------------------------------- HEADER ---------------------------*/
 header{
     max-width: 960px;
     margin: auto;
-    background:  rgb(231, 139, 231);/*mismo color para el contenido del header*/ 
-    overflow: hidden;/*para poder ocupar el float y mover los contenedores*/
+    overflow: hidden;/*para poder ocupar el float y mover los contenedores */
     margin-bottom:10px;
     margin-top: 10px;
-    border-radius: 10px;
+    background: rgba(252, 171, 240, 0.47);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(17.3px);
+    -webkit-backdrop-filter: blur(17.3px);
+    border: 1px solid rgba(252, 171, 240, 0.57);
 }
 #header{
     width: 100%;
@@ -23,14 +28,17 @@ header{
 }
 #logo{
     float: left;
-    width: 40%;
+    width: 1%;
     padding: 10px 10px;
     box-sizing: border-box;
+    /* background-image: ./src/logo.png; */
+    background-image: url("http://localhost/Floreria-Anylu/src/logo.png")
 
 }
-#logo .img{
-    width: 100%;
-}
+/* #logo .img{
+    width: 4px;
+    height: 4px;
+} */
 a{
     text-decoration: none;
     color: black;
@@ -53,8 +61,8 @@ header #header nav ul li{
     padding: 10px;
 }
 header #header nav ul li a:hover{
-    color: black;
-    background:  rgb(255, 255, 255);
+    color: grey;
+    /* background:  rgb(255, 255, 255); */
     border-radius: 5px;
 }
 /* -------------------body------------------------------------- */
