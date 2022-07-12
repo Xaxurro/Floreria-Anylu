@@ -28,14 +28,17 @@ header{
 }
 #logo{
     float: left;
-    width: 40%;
+    width: 1%;
     padding: 10px 10px;
     box-sizing: border-box;
+    /* background-image: ./src/logo.png; */
+    background-image: url("http://localhost/Floreria-Anylu/src/logo.png")
 
 }
-#logo .img{
-    width: 100%;
-}
+/* #logo .img{
+    width: 4px;
+    height: 4px;
+} */
 a{
     text-decoration: none;
     color: black;
@@ -58,8 +61,8 @@ header #header nav ul li{
     padding: 10px;
 }
 header #header nav ul li a:hover{
-    color: black;
-    background:  rgb(255, 255, 255);
+    color: grey;
+    /* background:  rgb(255, 255, 255); */
     border-radius: 5px;
 }
 /* -------------------body------------------------------------- */
