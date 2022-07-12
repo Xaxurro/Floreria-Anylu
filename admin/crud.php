@@ -1,5 +1,5 @@
 <?php
-    include("connection.php");
+    include("../connection.php");
     if($_POST){
         $id = $_POST["id"];
         $nombre = $_POST["nombre"];
@@ -19,6 +19,19 @@
     <title>Modificar Base de Datos</title>
 </head>
 <body>
+<?php
+echo $_SERVER['PHP_SELF'];
+echo "<br>";
+echo $_SERVER['SERVER_NAME'];
+echo "<br>";
+echo $_SERVER['HTTP_HOST'];
+echo "<br>";
+echo $_SERVER['HTTP_REFERER'];
+echo "<br>";
+echo $_SERVER['HTTP_USER_AGENT'];
+echo "<br>";
+echo $_SERVER['SCRIPT_NAME'];
+?>
     <form action="crud.php" method="post">
         <label for="id">Id: </label>
         <input type="text" name="id" id="id" placeholder="Id"><br><br>
@@ -37,10 +50,41 @@
 
         <button type="submit" name="opcion" value="A">Añadir</button>
         <button type="submit" name="opcion" value="M">Modificar</button>
-        <button type="submit" name="opcion" value="E">Eliminar</button>
     </form><br><br><br>
 
-    
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </tr>
+        <?php
+        $sql = "SELECT * FROM product;";
+        $result = mysqli_query($con, $sql);
+        if(mysqli_num_rows($result) > 0){
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "
+                <tr>
+                    <td>".$row["id_producto"]."</td>
+                    <td>".$row["nombre_producto"]."</td>
+                    <td>".$row["descripcion_producto"]."</td>
+                    <td>".$row["stock_producto"]."</td>
+                    <td>".$row["precio_producto"]."</td>
+                    <td>".$row["estado"]."</td>
+                    <td>
+                    <button type='submit' name='opcion' value='M'>Modificar</button>
+                    <a href='delete.php?id=".$row["id"].">Eliminar</a>
+                    </td>
+                </tr>
+                ";
+            }
+        }
+        ?>
+    </table>
+
     <?php
     if($_POST){
         switch($opcion){
@@ -53,21 +97,13 @@
                 }
                 mysqli_close($con);
                 break;
+
             case "M":
                 $sql = "UPDATE product SET nombre_producto = '$nombre', descripcion_producto = '$descripcion', stock_producto = '$stock', precio_producto = '$precio' WHERE id_producto = '$id';";
                 if(mysqli_query($con, $sql)){
                     echo "Se elimino Correctamente<br><br>";
                 } else {
                     echo "No se elimino<br><br>";
-                }
-                mysqli_close($con);
-                break;
-            case "E":
-                $sql = "DELETE FROM product WHERE id_producto = '$id';";
-                if(mysqli_query($con, $sql)){
-                    echo "Se modifico Correctamente<br><br>";
-                } else {
-                    echo "No se modifico<br><br>";
                 }
                 mysqli_close($con);
                 break;
