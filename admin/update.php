@@ -9,10 +9,11 @@
         $descripcion = $_POST["descripcion"];
         $stock = $_POST["stock"];
         $precio = $_POST["precio"];
+        $estado = $_POST["estado"];
 
         include("../controller/connection.php");
 
-        $sql = "UPDATE product SET nombre_producto = '$nombre', descripcion_producto = '$descripcion', stock_producto = '$stock', precio_producto = '$precio' WHERE id_producto = '$id';";
+        $sql = "UPDATE product SET nombre_producto = '$nombre', descripcion_producto = '$descripcion', stock_producto = $stock, precio_producto = $precio, estado = $estado WHERE id_producto = '$id';";
         if($con->query($sql)){
             echo "Se modifico Correctamente<br><br>";
         } else {
@@ -33,6 +34,7 @@
 </head>
 <body>
     <form action="update.php" method="post">
+        <!-- TODO Añadir en JS la validacion del formulario-->
         <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $_GET["nombre"];?>"><br><br>
         
@@ -44,6 +46,13 @@
         
         <label for="precio">Precio: </label>
         <input type="text" name="precio" id="precio" placeholder="Precio" value="<?php echo $_GET["precio"];?>"><br><br>
+        
+        <input type="radio" name="estado" id="estado" value="1">
+        <label for="estado">Disponible</label>
+        
+        <input type="radio" name="estado" id="estado" value="0">
+        <label for="estado">No Disponible</label>
+        <!-- TODO Añadir en JS la validacion del formulario-->
 
         <button type="submit" name="id" value="<?php echo $id?>">Modificar</button>
     </form>

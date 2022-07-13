@@ -14,7 +14,7 @@ CREATE TABLE product(
 CREATE TABLE photo(
     id_foto int(4),
     id_producto int(5),
-    foto blob
+    foto longblob
 );
 
 CREATE TABLE usuario(

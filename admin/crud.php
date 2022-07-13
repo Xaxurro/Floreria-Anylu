@@ -25,7 +25,8 @@
     <title>Modificar Base de Datos</title>
 </head>
 <body>
-    <form action="crud.php" method="post">        
+    <form action="crud.php" method="post">
+        <!-- TODO Añadir en JS la validacion del formulario-->
         <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br><br>
         
@@ -39,6 +40,7 @@
         <input type="text" name="precio" id="precio" placeholder="Precio"><br><br>
 
         <button type="submit" name="opcion">Añadir</button>
+        <!-- TODO Añadir en JS la validacion del formulario-->
     </form><br><br><br>
 
     <table>
@@ -48,7 +50,7 @@
             <th>Descripcion</th>
             <th>Stock</th>
             <th>Precio</th>
-            <th>Estado</th>
+            <th>Disponible</th>
             <th>Opciones</th>
         </tr>
         <?php
@@ -62,9 +64,15 @@
                     <td>".$row["nombre_producto"]."</td>
                     <td>".$row["descripcion_producto"]."</td>
                     <td>".$row["stock_producto"]."</td>
-                    <td>".$row["precio_producto"]."</td>
-                    <td>".$row["estado"]."</td>
+                    <td>".$row["precio_producto"]."</td>";
+                if($row["estado"] == 1){
+                    echo "<td>Si</td>";
+                } else {
+                    echo "<td>No</td>";
+                }
+                echo "
                     <td>
+                    <a href='updateImg.php?id=".$row["id_producto"]."'>Modificar Imagenes</a>
                     <a href='update.php?id=".$row["id_producto"]."&&nombre=".$row["nombre_producto"]."&&descripcion=".$row["descripcion_producto"]."&&stock=".$row["stock_producto"]."&&precio=".$row["precio_producto"]."'>Modificar</a>
                     <a href='delete.php?id=".$row["id_producto"]."id=".$row["id_producto"]."'>Eliminar</a>
                     </td>
