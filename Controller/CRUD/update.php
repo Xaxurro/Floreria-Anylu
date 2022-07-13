@@ -9,7 +9,7 @@
         $precio = $_POST["precio"];
         $estado = $_POST["estado"];
 
-        include("../controller/connection.php");
+        include("../../Model/connection.php");
 
         $sql = "UPDATE product SET nombre_producto = '$nombre', descripcion_producto = '$descripcion', stock_producto = $stock, precio_producto = $precio, estado = $estado WHERE id_producto = '$id';";
         if($con->query($sql)){

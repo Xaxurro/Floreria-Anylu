@@ -1,5 +1,5 @@
 <?php
-    include("headerAdmin.php");
+    include("../Placeholder/headerAdmin.php");
     if($_POST){
         $nombre = $_POST["nombre"];
         $descripcion = $_POST["descripcion"];
@@ -64,7 +64,7 @@
                 }
                 echo "
                     <td>
-                    <a href='updateImg.php?id=".$row["id_producto"]."'>Modificar Imagenes</a>
+                    <a href='../CRUDImagenes/crudImagenes.php?id=".$row["id_producto"]."'>Modificar Imagenes</a>
                     <a href='update.php?id=".$row["id_producto"]."&&nombre=".$row["nombre_producto"]."&&descripcion=".$row["descripcion_producto"]."&&stock=".$row["stock_producto"]."&&precio=".$row["precio_producto"]."&&estado=".$row["estado"]."'>Modificar</a>
                     <a href='delete.php?id=".$row["id_producto"]."id=".$row["id_producto"]."'>Eliminar</a>
                     </td>

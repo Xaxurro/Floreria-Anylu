@@ -22,7 +22,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['password'];
     $_SESSION['id']=$id;
     
-    $sql ="SELECT * FROM admin WHERE id_admin='$id' and password_admin='$password'";
+    $sql ="SELECT * FROM admin WHERE id_admin='$id' and password_admin='$password';";
     $result = $con -> query($sql);
     
     if ($result-> num_rows > 0){
@@ -30,11 +30,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header('Location:./admin/indexAdmin.php');
         
     }else{
-        echo "Error, contrasenia o id de administrador no valido";
+        echo "Error, contraseña o id de administrador no valido";
     }
         
-    // $result -> free_result;
-    // mysqli_close($con);
+    $con->close();
 }
 
 

@@ -15,17 +15,17 @@
         </tr>
         <?php
         $current_day = date('Y-m-d');
-        $sql = "SELECT NAME,HOUR FROM VISIT WHERE DAY = '$current_day' ORDER BY HOUR;";
+        $sql = "SELECT name, hour FROM visit WHERE day = '$current_day' ORDER BY hour;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {
                 echo "
                 <tr>
-                    <td>".$row["NAME"]."</td>
-                    <td>".$row["HOUR"]."</td>
-                    <td>'0'</td>
-                    <td>'0'</td>
-                    <td>'0'</td>
+                    <td>".$row["name"]."</td>
+                    <td>".$row["hour"]."</td>
+                    <td>0</td>
+                    <td>0</td>
+                    <td>0</td>
                 
                 </tr>
                 ";

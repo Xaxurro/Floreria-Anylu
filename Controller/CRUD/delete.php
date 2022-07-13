@@ -1,6 +1,6 @@
 <?php
 if($_GET){
-    include("../controller/connection.php");
+    include("../../Model/connection.php");
     $sql = "DELETE FROM product WHERE id_producto = '".$_GET["id"]."';";
     if($con->query($sql)){
         echo "Se modifico Correctamente<br><br>";

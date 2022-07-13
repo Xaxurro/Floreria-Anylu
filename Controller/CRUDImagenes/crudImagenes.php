@@ -1,8 +1,8 @@
 <?php
-include("../controller/connection.php");
-if($_GET){
-    $id_producto = $_GET["id"];
-}
+    include("../Placeholder/headerAdmin.php");
+    if($_GET){
+        $id_producto = $_GET["id"];
+    }
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +22,8 @@ if($_GET){
     </form>
 
     <br><br>
-    <a href='crud.php'>Volver</a>
+    <a href='../CRUD/crud.php'>Volver</a>
     <br><br>
-
     
     <table>
         <tr>
