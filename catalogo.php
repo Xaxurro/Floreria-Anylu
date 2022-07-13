@@ -21,14 +21,34 @@ define("KEY_TOKEN","grKfH-52.LQ*")
             <div class="row" id="productos">
                 <?php
                 $query = mysqli_query($con,"SELECT * FROM product");
+                
+                
                 while($consulta = mysqli_fetch_array($query)){
-                    echo '<div class="card" style="width: 18rem;">
-                    <img src="src/flores.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                            <h5 class="card-title">'.$consulta['nombre_producto'].'</h5>
-                            <p class="card-text">'.$consulta['descripcion_producto'].'</p>
-                            <p class="card-text">$'.$consulta['precio_producto'].'</p>
-                            <a  href="producto.php?id='.$consulta['id_producto'].'& token='.hash_hmac('sha1',$consulta['id_producto'],KEY_TOKEN).'"  class="btn btn-primary id="boton" >Ver más</a>
+                    /*
+                    while($fotos = mysqli_fetch_array($query2)){
+
+                    } 
+                    */
+                    $nombre = $consulta['nombre_producto'];
+                    $descripcion = $consulta['descripcion_producto'];
+                    $stock = $consulta['stock_producto'];
+                    $precio = $consulta['precio_producto'];
+                    $estado = $consulta['estado'];
+                    $id = $consulta['id_producto'];
+                    echo '<div class="card" style="width: 18rem;">';
+                    $query2 = mysqli_query($con,"SELECT * FROM photo where id_producto=$id LIMIT 1;");
+                    $foto = mysqli_fetch_array($query2);
+                    if(mysqli_num_rows($query2) == 1){
+                        $imagen = $foto['foto'];
+                        echo '<img src="data:image/jpg;base64,'.base64_encode($imagen).'" class="card-img-top" alt="...">';
+                    }else{
+                        echo '<img src="src/nodisp.png" class="card-img-top" alt="...">';
+                    }
+                    echo '<div class="card-body">
+                            <h5 class="card-title">'.$nombre.'</h5>
+                            <p class="card-text">'.$descripcion.'</p>
+                            <p class="card-text">$'.$precio.'</p>
+                            <a  href="producto.php?id='.$id.'& token='.hash_hmac('sha1',$id,KEY_TOKEN).'"  class="btn btn-primary id="boton" >Ver más</a>
 
                         </div>
                     </div>';
