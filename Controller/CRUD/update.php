@@ -11,7 +11,7 @@
 
         include("../../Model/connection.php");
 
-        $sql = "UPDATE product SET nombre = '$nombre', descripcion = '$descripcion', stock = $stock, precio = $precio, estado = $estado WHERE id = '$id';";
+        $sql = "UPDATE producto SET nombre = '$nombre', descripcion = '$descripcion', stock = $stock, precio = $precio, estado = $estado WHERE id = '$id';";
         if($con->query($sql)){
             echo "Se modifico Correctamente<br><br>";
         } else {

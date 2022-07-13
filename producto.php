@@ -1,6 +1,6 @@
 <?php
-include('controller/connection.php');
-include('view/header.php');
+include('./Model/connection.php');
+include('./View/header.php');
 define("KEY_TOKEN","grKfH-52.LQ*");
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
@@ -14,24 +14,16 @@ if($id == '' || $token == ''){
     
     if($token == $token_tmp){
 
-        $sql    ="SELECT count(id_producto) FROM product ";
+        $sql    ="SELECT count(id) FROM producto ";
         $result = $con->query($sql);
         if($result->num_rows > 0){
-            $query = mysqli_query($con,"SELECT * FROM product where id_producto = $id");
+            $query = mysqli_query($con,"SELECT * FROM producto where id = $id");
             $consulta = mysqli_fetch_array($query);
-            $nombre = $consulta['nombre_producto'];
-            $descripcion = $consulta['descripcion_producto'];
-            $stock = $consulta['stock_producto'];
-            $precio = $consulta['precio_producto'];
+            $nombre = $consulta['nombre'];
+            $descripcion = $consulta['descripcion'];
+            $stock = $consulta['stock'];
+            $precio = $consulta['precio'];
             $estado = $consulta['estado'];
-            /*$dir_imagen = '';
-            $rutaImg = $dir_imagen . 'principal.jpg';
-
-            if(!file_exists($rutaImg)){
-                $rutaImg = 'src/nodisp.png';
-            }
-            
-            */
         }
 
     }else{

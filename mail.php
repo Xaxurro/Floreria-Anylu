@@ -32,10 +32,10 @@ include("./View/header.php");
 
         if (!empty($Date)){
 
-            $sql = "INSERT INTO visit (name, mail, day, hour) VALUES ('$Name','$Mail','$Date','$Hour');";
+            $sql = "INSERT INTO visita VALUES ('$Name','$Mail','$Date','$Hour');";
             
             if ($con -> query($sql)=== TRUE){
-                echo "visita agendada!.";
+                echo "Visita agendada!.";
             }else{
                 echo "Hubo un problema intentelo denuevo.";
             }
