@@ -1,6 +1,6 @@
 <?php
 if($_POST){
-    include("../controller/connection.php");
+    include("../../Model/connection.php");
 
     $id_producto = $_POST["id_producto"];
     $foto = addslashes(file_get_contents($_FILES["foto"]["tmp_name"]));
@@ -17,6 +17,6 @@ if($_POST){
         echo "No se modifico<br><br>";
     }
     $con->close();
-    header("Location: ./updateImg.php?id=$id_producto");
+    header("Location: ./crudImagenes.php?id=$id_producto");
 }
 ?>
