@@ -1,7 +1,5 @@
 <?php
-    if($_GET){
-        $id = $_GET["id"];
-    }
+    $id = $_GET["id"];
     
     if($_POST){
         $id = $_POST["id"];
@@ -47,10 +45,10 @@
         <label for="precio">Precio: </label>
         <input type="text" name="precio" id="precio" placeholder="Precio" value="<?php echo $_GET["precio"];?>"><br><br>
         
-        <input type="radio" name="estado" id="estado" value="1">
+        <input type="radio" name="estado" id="estado" value="1" <?php if($_GET["estado"] == 1){echo "checked";}?>>
         <label for="estado">Disponible</label>
         
-        <input type="radio" name="estado" id="estado" value="0">
+        <input type="radio" name="estado" id="estado" value="0" <?php if($_GET["estado"] == 0){echo "checked";}?>>
         <label for="estado">No Disponible</label>
         <!-- TODO Añadir en JS la validacion del formulario-->
 
