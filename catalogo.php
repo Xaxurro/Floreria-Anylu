@@ -5,7 +5,7 @@ define("KEY_TOKEN","grKfH-52.LQ*")
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,14 +21,7 @@ define("KEY_TOKEN","grKfH-52.LQ*")
             <div class="row" id="productos">
                 <?php
                 $query = mysqli_query($con,"SELECT * FROM product");
-                
-                
                 while($consulta = mysqli_fetch_array($query)){
-                    /*
-                    while($fotos = mysqli_fetch_array($query2)){
-
-                    } 
-                    */
                     $nombre = $consulta['nombre_producto'];
                     $descripcion = $consulta['descripcion_producto'];
                     $stock = $consulta['stock_producto'];
@@ -49,16 +42,11 @@ define("KEY_TOKEN","grKfH-52.LQ*")
                             <p class="card-text">'.$descripcion.'</p>
                             <p class="card-text">$'.$precio.'</p>
                             <a  href="producto.php?id='.$id.'& token='.hash_hmac('sha1',$id,KEY_TOKEN).'"  class="btn btn-primary id="boton" >Ver más</a>
-
                         </div>
                     </div>';
                 }
-
             ?>
-
-
             </div>
-
         </div>
     </section>
 </body>
