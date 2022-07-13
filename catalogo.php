@@ -1,5 +1,5 @@
 <?php
-    include("./Modelo/connection.php");
+    include("./Model/connection.php");
     include("./View/header.php");
     define("KEY_TOKEN","grKfH-52.LQ*")
 ?>
