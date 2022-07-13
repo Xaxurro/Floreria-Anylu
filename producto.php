@@ -14,30 +14,29 @@ if($id == '' || $token == ''){
     
     if($token == $token_tmp){
 
-        $sql    ="SELECT count(id) FROM producto ";
+        $sql    ="SELECT count(id) FROM producto;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
-            $query = mysqli_query($con,"SELECT * FROM producto where id = $id");
-            $consulta = mysqli_fetch_array($query);
+            $sql    ="SELECT * FROM producto where id = $id;";
+            $con->query($sql);
+            $consulta = $result->fetch_assoc();
             $nombre = $consulta['nombre'];
             $descripcion = $consulta['descripcion'];
             $stock = $consulta['stock'];
             $precio = $consulta['precio'];
             $estado = $consulta['estado'];
-            $query2 = mysqli_query($con,"SELECT * FROM photo where id_producto=$id LIMIT 1;");
-            $foto = mysqli_fetch_array($query2);
+            $sql    ="SELECT * FROM photo where id_producto=$id LIMIT 1;";
+            $con->query($sql);
+            $foto = $result->fetch_assoc();
             if(mysqli_num_rows($query2) == 1){
-                $imagen = $foto['foto'];
-                
+                $imagen = $foto['foto']; 
             }else{
                 $imagen = 'src/nodisp.png';
             }
-
-    }else{
-        echo 'Error al procesar la petición';
-        exit;
-        
-    }
+        } else {
+            echo 'Error al procesar la petición';
+            exit;
+        }
     }
 }
 $con->close();
