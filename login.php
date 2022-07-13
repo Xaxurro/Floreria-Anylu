@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['password'];
     $_SESSION['id']=$id;
     
-    $sql ="SELECT * FROM admin WHERE id_admin='$id' and password_admin='$password';";
+    $sql ="SELECT * FROM admin WHERE id_admin='$id' and contraseña='$password';";
     $result = $con -> query($sql);
     
     if ($result-> num_rows > 0){

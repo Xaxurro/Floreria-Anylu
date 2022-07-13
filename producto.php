@@ -1,6 +1,6 @@
 <?php
-include('Model/connection.php');
-include('view/header.php');
+include('./Model/connection.php');
+include('./View/header.php');
 define("KEY_TOKEN","grKfH-52.LQ*");
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
@@ -14,24 +14,29 @@ if($id == '' || $token == ''){
     
     if($token == $token_tmp){
 
-        $sql    ="SELECT count(id_producto) FROM product ";
+        $sql    ="SELECT count(id) FROM producto;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
-            $query = mysqli_query($con,"SELECT * FROM product where id_producto = $id");
-            $consulta = mysqli_fetch_array($query);
-            $nombre = $consulta['nombre_producto'];
-            $descripcion = $consulta['descripcion_producto'];
-            $stock = $consulta['stock_producto'];
-            $precio = $consulta['precio_producto'];
+            $sql    ="SELECT * FROM producto where id = $id;";
+            $con->query($sql);
+            $consulta = $result->fetch_assoc();
+            $nombre = $consulta['nombre'];
+            $descripcion = $consulta['descripcion'];
+            $stock = $consulta['stock'];
+            $precio = $consulta['precio'];
             $estado = $consulta['estado'];
-            $query2 = mysqli_query($con,"SELECT * FROM photo where id_producto=$id LIMIT 1;");
-            $foto = mysqli_fetch_array($query2);
-            
-        }else{
-        echo 'Error al procesar la petición';
-        exit;
-        
-    }
+            $sql    ="SELECT * FROM photo where id_producto=$id LIMIT 1;";
+            $con->query($sql);
+            $foto = $result->fetch_assoc();
+            if(mysqli_num_rows($query2) == 1){
+                $imagen = $foto['foto']; 
+            }else{
+                $imagen = 'src/nodisp.png';
+            }
+        } else {
+            echo 'Error al procesar la petición';
+            exit;
+        }
     }
 }
 $con->close();

@@ -2,16 +2,16 @@ CREATE DATABASE FLORERIA;
 
 USE FLORERIA;
 
-CREATE TABLE product(
-    id_producto int(5),
-    nombre_producto varchar(50),
-    descripcion_producto varchar(250),
-    stock_producto int(4),
-    precio_producto int(7),
+CREATE TABLE producto(
+    id int(5),
+    nombre varchar(50),
+    descripcion varchar(250),
+    stock int(4),
+    precio int(7),
     estado int(1)
 );
 
-CREATE TABLE photo(
+CREATE TABLE foto(
     id_foto int(4),
     id_producto int(5),
     foto longblob
@@ -26,13 +26,13 @@ CREATE TABLE usuario(
     telefono varchar(15)
 );
 
-CREATE TABLE cart(
+CREATE TABLE carrito(
     id_carrito int(7),
     id_producto int(5),
     cantidad int(3)
 );
 
-CREATE TABLE user_order(
+CREATE TABLE usuario_orden(
     id_orden int(7),
     id_carrito int(7),
     rut_usuario varchar(12)
@@ -40,48 +40,50 @@ CREATE TABLE user_order(
 
 CREATE TABLE admin(
     id_admin int(3),
-    username_admin varchar(30),
-    password_admin varchar(24)
+    usuario varchar(30),
+    contraseña varchar(24)
 );
 
-CREATE TABLE VISIT(
-    NAME VARCHAR(50),
-    MAIL VARCHAR(50),
-    DAY DATE,
-    HOUR VARCHAR (10));
+CREATE TABLE visita(
+    nombre VARCHAR(50),
+    mail VARCHAR(50),
+    dia DATE,
+    hora VARCHAR (10)
+);
 
-ALTER TABLE product
-ADD CONSTRAINT PK_product PRIMARY KEY (id_producto);
-ALTER TABLE product MODIFY id_producto INTEGER NOT NULL AUTO_INCREMENT;
+ALTER TABLE producto
+ADD CONSTRAINT PK_product PRIMARY KEY (id);
+ALTER TABLE producto MODIFY id INTEGER NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE photo
-ADD CONSTRAINT PK_photo PRIMARY KEY (id_foto);
-ALTER TABLE photo MODIFY id_foto INTEGER NOT NULL AUTO_INCREMENT;
+ALTER TABLE foto
+ADD CONSTRAINT PK_foto PRIMARY KEY (id_foto);
+ALTER TABLE foto MODIFY id_foto INTEGER NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE usuario
 ADD CONSTRAINT PK_usuario PRIMARY KEY (rut_usuario);
 
-ALTER TABLE cart
-ADD CONSTRAINT PK_cart PRIMARY KEY (id_carrito, id_producto);
-ALTER TABLE cart MODIFY id_carrito INTEGER NOT NULL AUTO_INCREMENT;
+ALTER TABLE carrito
+ADD CONSTRAINT PK_carrito PRIMARY KEY (id_carrito, id_producto);
+ALTER TABLE carrito MODIFY id_carrito INTEGER NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE user_order
-ADD CONSTRAINT PK_user_order PRIMARY KEY (id_orden);
-ALTER TABLE user_order MODIFY id_orden INTEGER NOT NULL AUTO_INCREMENT;
+ALTER TABLE usuario_orden
+ADD CONSTRAINT PK_usuario_orden PRIMARY KEY (id_orden);
+ALTER TABLE usuario_orden MODIFY id_orden INTEGER NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE admin
 ADD CONSTRAINT PK_admin PRIMARY KEY (id_admin);
 ALTER TABLE admin MODIFY id_admin INTEGER NOT NULL AUTO_INCREMENT;
 
 
-ALTER TABLE cart
-ADD CONSTRAINT PK_cart_user_order FOREIGN KEY (id_producto) REFERENCES product(id_producto);
+ALTER TABLE carrito
+ADD CONSTRAINT FK_carrito_usuario_orden FOREIGN KEY (id_producto) REFERENCES producto(id);
 
-ALTER TABLE user_order
-ADD CONSTRAINT PK_user_order_cart FOREIGN KEY (id_carrito) REFERENCES cart(id_carrito);
+ALTER TABLE usuario_orden
+ADD CONSTRAINT FK_usuario_orden_carrito FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito);
 
-ALTER TABLE photo
-ADD CONSTRAINT PK_photo_product FOREIGN KEY (id_producto) REFERENCES product(id_producto);
+ALTER TABLE foto
+ADD CONSTRAINT FK_foto_producto FOREIGN KEY (id_producto) REFERENCES producto(id);
 
-ALTER TABLE user_order
-ADD CONSTRAINT PK_user_order_user FOREIGN KEY (rut_usuario) REFERENCES usuario(rut_usuario);
+ALTER TABLE usuario_orden
+ADD CONSTRAINT FK_usuario_orden_usuario FOREIGN KEY (rut_usuario) REFERENCES usuario(rut_usuario);
+
