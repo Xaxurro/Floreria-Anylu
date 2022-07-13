@@ -1,4 +1,3 @@
 <?php 
-
-include ("./headerAdmin.php");
+    include ("./headerAdmin.php");
 ?>
