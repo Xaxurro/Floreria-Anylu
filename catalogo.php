@@ -1,7 +1,7 @@
 <?php
-include("./controller/connection.php");
-include("./view/header.php");
-define("KEY_TOKEN","grKfH-52.LQ*")
+    include("./Modelo/connection.php");
+    include("./View/header.php");
+    define("KEY_TOKEN","grKfH-52.LQ*")
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ define("KEY_TOKEN","grKfH-52.LQ*")
         <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Floreria Anylu - Catalogo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     
 </head>
@@ -20,7 +20,7 @@ define("KEY_TOKEN","grKfH-52.LQ*")
         <div class="container">
             <div class="row" id="productos">
                 <?php
-                $query = mysqli_query($con,"SELECT * FROM product");
+                $query = mysqli_query($con,"SELECT * FROM producto");
                 
                 
                 while($consulta = mysqli_fetch_array($query)){

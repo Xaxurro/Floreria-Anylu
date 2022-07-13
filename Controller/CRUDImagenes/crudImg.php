@@ -32,7 +32,7 @@
             <th>Opciones</th>
         </tr>
         <?php
-        $sql = "SELECT * FROM photo WHERE id_producto = $id_producto;";
+        $sql = "SELECT * FROM foto WHERE id_producto = $id_producto;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {

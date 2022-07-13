@@ -1,7 +1,7 @@
 <?php 
 
-include("./controller/connection.php");
-include("./view/header.php");
+include("./Model/connection.php");
+include("./View/header.php");
 
 ?>
 <fieldset>
@@ -22,34 +22,25 @@ include("./view/header.php");
 </fieldset>
 
 <?php 
-$Mail = $Date = $Hour = $Name = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST")
-{
-    $Mail = $_POST["Mail"];
-    $Date = $_POST["Date"];
-    $Hour = $_POST["Hour"];
-    $Name = $_POST["Name"];
+    $Mail = $Date = $Hour = $Name = "";
+    if ($_POST)
+    {
+        $Mail = $_POST["Mail"];
+        $Date = $_POST["Date"];
+        $Hour = $_POST["Hour"];
+        $Name = $_POST["Name"];
 
-    if (!empty($Date)){
+        if (!empty($Date)){
 
-        $sql = "INSERT INTO VISIT (NAME, MAIL, DAY, HOUR) VALUES ('$Name','$Mail','$Date','$Hour');";
-        
-        if ($con -> query($sql)=== TRUE){
-            echo "visita agendada!.";
+            $sql = "INSERT INTO visit (name, mail, day, hour) VALUES ('$Name','$Mail','$Date','$Hour');";
+            
+            if ($con -> query($sql)=== TRUE){
+                echo "visita agendada!.";
+            }else{
+                echo "Hubo un problema intentelo denuevo.";
+            }
         }else{
-            echo "hubo un problema intentelo denuevo.";
+            echo "Ingrese una fecha valida para su visita, intentelo nuevamente";
         }
-    }else{
-        echo "ingrese una fecha valida para su visita, intentelo nuevamente";
     }
-        
-
-
-
-
-
-}
-
-
-
 ?>
