@@ -30,6 +30,7 @@ header{
 }
 #logo .img{
     width: 1cm;
+    margin-left: 5px;
 }
 #colorHeader{
     text-decoration: none;

@@ -56,7 +56,7 @@ $con->close();
     <div class="container">
         <div class="row">
             <div class="col-md-6 order-md-1">
-                <img src="src/logo2.png">
+                <img src="src/logo.png">
             </div>
             <div class="col-md-6 order-md-2">
                 <h2><?php echo $nombre; ?></h2>
