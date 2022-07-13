@@ -81,6 +81,14 @@ header #header nav ul li a:hover{
     clear: both;
     overflow: hidden;
 }
+.card{
+    margin-left: 12px;
+    margin-right: 20px;
+}
+#boton{
+    background-color: #e78be7;
+    border-color: #e78be7;
+}
 /* -------------------Footer------------------------------------- */
 
 /* -------------------elements------------------------------------- */
