@@ -8,7 +8,7 @@ include("./controller/connection.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="main.css" rel="stylesheet" type="text/css">
+    <link href="./css/main.css" rel="stylesheet" type="text/css">
     <title>Floreria Anylu</title>
 </head>
 <body>
@@ -16,7 +16,7 @@ include("./controller/connection.php");
         <div id="header">
             <div id="logo">
 
-            <a href="index.php"></a><img class="logo" src="src/logo.png" alt="Logo" width="120cm">
+            <a href="index.php"><img class="logo" src="src/logo.png" alt="Logo" width="120cm"></a>
             </div>
             <nav>
                 <ul>
@@ -28,4 +28,5 @@ include("./controller/connection.php");
             </nav>
         </div>
     </header>
+   
    
