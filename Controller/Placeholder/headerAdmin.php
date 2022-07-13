@@ -21,7 +21,7 @@
             <nav>
                 <ul>
                     <li><a href="./indexAdmin.php">Inicio</a></li>
-                    <li><a href="./CRUD/crud.php">Gestionar Productos</a></li>
+                    <li><a href="../CRUD/crud.php">Gestionar Productos</a></li>
                     <li><a href="./visits.php">Visitas Agendadas</a></li>
                     <li><a href="../index.php"><b><i>Cerrar sesion</i></b></a></li>
                     

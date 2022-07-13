@@ -1,9 +1,6 @@
 <?php
-
-include("./controller/connection.php");
-include("./view/header.php");
-$id = $password = "";
-
+    include("./View/header.php");
+    $id = $password = "";
 ?>
     <form action="login.php" method="POST">
     
@@ -27,7 +24,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if ($result-> num_rows > 0){
    
-        header('Location:./admin/indexAdmin.php');
+        header('Location:./Controller/Placeholder/indexAdmin.php');
         
     }else{
         echo "Error, contraseña o id de administrador no valido";

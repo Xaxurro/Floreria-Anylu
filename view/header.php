@@ -1,5 +1,5 @@
 <?php
-include("./controller/connection.php");
+    include("./Model/connection.php");
 
 ?>
 <!DOCTYPE html>
