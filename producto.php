@@ -24,20 +24,20 @@ if($id == '' || $token == ''){
             $stock = $consulta['stock_producto'];
             $precio = $consulta['precio_producto'];
             $estado = $consulta['estado'];
-            /*$dir_imagen = '';
-            $rutaImg = $dir_imagen . 'principal.jpg';
-
-            if(!file_exists($rutaImg)){
-                $rutaImg = 'src/nodisp.png';
+            $query2 = mysqli_query($con,"SELECT * FROM photo where id_producto=$id LIMIT 1;");
+            $foto = mysqli_fetch_array($query2);
+            if(mysqli_num_rows($query2) == 1){
+                $imagen = $foto['foto'];
+                
+            }else{
+                $imagen = 'src/nodisp.png';
             }
-            
-            */
-        }
 
     }else{
         echo 'Error al procesar la petición';
         exit;
         
+    }
     }
 }
 $con->close();
@@ -56,7 +56,7 @@ $con->close();
     <div class="container">
         <div class="row">
             <div class="col-md-6 order-md-1">
-                <img src="src/logo.png">
+                <img src= "data:image/jpg;base64,'.base64_encode($imagen).'">
             </div>
             <div class="col-md-6 order-md-2">
                 <h2><?php echo $nombre; ?></h2>
