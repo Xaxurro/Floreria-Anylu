@@ -14,7 +14,7 @@ CREATE TABLE product(
 CREATE TABLE photo(
     id_foto int(4),
     id_producto int(5),
-    foto blob
+    foto longblob
 );
 
 CREATE TABLE usuario(
@@ -44,6 +44,11 @@ CREATE TABLE admin(
     password_admin varchar(24)
 );
 
+CREATE TABLE VISIT(
+    NAME VARCHAR(50),
+    MAIL VARCHAR(50),
+    DAY DATE,
+    HOUR VARCHAR (10));
 
 ALTER TABLE product
 ADD CONSTRAINT PK_product PRIMARY KEY (id_producto);

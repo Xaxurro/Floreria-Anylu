@@ -2,30 +2,54 @@
 
 include("./controller/connection.php");
 include("./view/header.php");
+$id = $password = "";
 
-if($_POST){
+?>
+    <form action="login.php" method="POST">
+    
+    <label for="id">id:</label><br>
+    <input type="text" name="id" maxlength="255"><br><br>
+    
+    <label for="password">Contraseña:</label><br>
+    <input type="password" name="password" maxlength="24"><br><br>
+
+    <input type="submit" value="Login"><br>
+    </form>
+<?php 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     $id = $_POST['id'];
     $password = $_POST['password'];
     $_SESSION['id']=$id;
     
-    $query="SELECT * FROM admin WHERE id_admin='$id' and password_admin='$password'";
-    $sql = mysqli_query($con,$query);
+    $sql ="SELECT * FROM admin WHERE id_admin='$id' and password_admin='$password';";
+    $result = $con -> query($sql);
     
-    $rows = mysqli_num_rows($sql);
-    if($rows){
-        header('location:index.php');
+    if ($result-> num_rows > 0){
+   
+        header('Location:./admin/indexAdmin.php');
+        
     }else{
-        ?>
-        <h1>ERROR, ID O CONTRASEÑA INCORRECTOS</h1>
-        <?php
+        echo "Error, contraseña o id de administrador no valido";
     }
-    mysqli_free_result($sql);
-    mysqli_close($con);
-}?>
-    <form action="login.php" method="POST">
-    <p>id:<input type="text" name="id" maxlength="255"></p>
-    <p>Contraseña:<input type="password" name="password" maxlength="24"></p>
-    <input type="submit" name="option" value="Login"><br>
-    </form>
-<?php include("./view/footer.php"); ?>
+        
+    $con->close();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// include("./view/footer.php"); ?>
