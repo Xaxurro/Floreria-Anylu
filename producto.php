@@ -26,14 +26,8 @@ if($id == '' || $token == ''){
             $estado = $consulta['estado'];
             $query2 = mysqli_query($con,"SELECT * FROM photo where id_producto=$id LIMIT 1;");
             $foto = mysqli_fetch_array($query2);
-            if(mysqli_num_rows($query2) == 1){
-                $imagen = $foto['foto'];
-                
-            }else{
-                $imagen = 'src/nodisp.png';
-            }
-
-    }else{
+            
+        }else{
         echo 'Error al procesar la petición';
         exit;
         
@@ -42,8 +36,9 @@ if($id == '' || $token == ''){
 }
 $con->close();
 ?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,7 +51,15 @@ $con->close();
     <div class="container">
         <div class="row">
             <div class="col-md-6 order-md-1">
-                <img src= "data:image/jpg;base64,'.base64_encode($imagen).'">
+                <?php 
+                if(mysqli_num_rows($query2) == 1){
+                    $imagen = $foto['foto'];
+                    echo '<img src="data:image/jpg;base64,'.base64_encode($imagen).'" class="card-img-top" alt="...">'; 
+                }else{
+                    echo '<img src="src/nodisp.png" class="card-img-top" alt="...">';
+                }
+                
+                ?>
             </div>
             <div class="col-md-6 order-md-2">
                 <h2><?php echo $nombre; ?></h2>
