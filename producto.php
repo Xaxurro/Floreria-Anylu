@@ -1,6 +1,6 @@
 <?php
-include('conn.php');
-include('header.php');
+include('controller/connection.php');
+include('view/header.php');
 define("KEY_TOKEN","grKfH-52.LQ*");
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
