@@ -18,17 +18,17 @@ if($id == '' || $token == ''){
         $result = $con->query($sql);
         if($result->num_rows > 0){
             $sql    ="SELECT * FROM producto where id = $id;";
-            $con->query($sql);
-            $consulta = $result->fetch_assoc();
+            $resultProducto = $con->query($sql);
+            $consulta = $resultProducto->fetch_assoc();
             $nombre = $consulta['nombre'];
             $descripcion = $consulta['descripcion'];
             $stock = $consulta['stock'];
             $precio = $consulta['precio'];
             $estado = $consulta['estado'];
-            $sql    ="SELECT * FROM photo where id_producto=$id LIMIT 1;";
-            $con->query($sql);
-            $foto = $result->fetch_assoc();
-            if(mysqli_num_rows($query2) == 1){
+            $sql    ="SELECT * FROM foto where id_producto=$id LIMIT 1;";
+            $resultFoto = $con->query($sql);
+            $foto = $resultFoto->fetch_assoc();
+            if($resultFoto->num_rows > 0){
                 $imagen = $foto['foto']; 
             }else{
                 $imagen = 'src/nodisp.png';
@@ -57,7 +57,7 @@ $con->close();
         <div class="row">
             <div class="col-md-6 order-md-1">
                 <?php 
-                if(mysqli_num_rows($query2) == 1){
+                if($resultFoto->num_rows > 0){
                     $imagen = $foto['foto'];
                     echo '<img src="data:image/jpg;base64,'.base64_encode($imagen).'" class="card-img-top" alt="...">'; 
                 }else{
