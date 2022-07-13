@@ -61,7 +61,7 @@ $con->close();
             <div class="col-md-6 order-md-2">
                 <h2><?php echo $nombre; ?></h2>
                 <h2>$<?php echo $precio; ?></h2>
-                <h2><?php echo $stock; ?></h2>
+                <h2>Cantidad Disponible: <?php echo $stock; ?></h2>
                 <p class="lead">
                     <?php echo $descripcion; ?>
                 </p>
