@@ -16,7 +16,7 @@
         </tr>
         <?php
         $current_day = date('Y-m-d');
-        $sql = "SELECT nombre, hora FROM visita WHERE dia = '$current_day' ORDER BY hour;";
+        $sql = "SELECT nombre, hora FROM visita WHERE dia = '$current_day' ORDER BY hora;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
             while ($row = $result->fetch_assoc()) {

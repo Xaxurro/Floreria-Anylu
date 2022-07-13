@@ -43,7 +43,7 @@
             <th>Stock</th>
             <th>Precio</th>
             <th>Disponible</th>
-            <th>Opciones</th>
+            <th colspan="3">Modificar</th>
         </tr>
         <?php
         $sql = "SELECT * FROM producto;";
@@ -63,12 +63,9 @@
                     echo "<td>No</td>";
                 }
                 echo "
-                    <td>
-                    <a href='../CRUDImagenes/crudImagenes.php?id=".$row["id"]."'>Modificar Imagenes</a>
-                    <a href='update.php?id=".$row["id"]."&&nombre=".$row["nombre"]."&&descripcion=".$row["descripcion"]."&&stock=".$row["stock"]."&&precio=".$row["precio"]."&&estado=".$row["estado"]."'>Modificar</a>
-                    <a href='delete.php?id=".$row["id"]."'>Eliminar</a>
-                    </td>
-                </tr>
+                    <td><span><a href='../CRUDImagenes/crudImg.php?id=".$row["id"]."'>Imagen</a></span></td>
+                    <td><span><a href='update.php?id=".$row["id"]."&&nombre=".$row["nombre"]."&&descripcion=".$row["descripcion"]."&&stock=".$row["stock"]."&&precio=".$row["precio"]."&&estado=".$row["estado"]."'>Producto</a></span></td>
+                    <td><span><a href='delete.php?id=".$row["id"]."'>Eliminar</a></span></td>
                 ";
             }
         }
