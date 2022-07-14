@@ -1,7 +1,10 @@
-<?php include("./view/header.php"); ?>
+<?php include("./view/header.php"); 
+include("./Model/configCart.php");
+session_start();
+?>
 <section id="cuerpo">
     <a></a>
-    <img src="./src/daniel-lopez.png" alt="peruano1">
+    <img src="./src/flores.jpg" alt="peruano1">
     
 </section>
 <?php include("./view/footer.php"); ?>

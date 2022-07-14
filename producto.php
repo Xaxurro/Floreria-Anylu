@@ -1,7 +1,7 @@
 <?php
 include('./Model/connection.php');
 include('./View/header.php');
-define("KEY_TOKEN","grKfH-52.LQ*");
+include("./Model/token.php");
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 $token = isset($_GET['token']) ? $_GET['token'] : '';
@@ -75,7 +75,7 @@ $con->close();
                 </p>
                 <div class="d-grid gap-3 col-10 mx-auto">
                     <button class="btn btn-primary" type="button">Comprar ahora</button>
-                    <button class="btn btn-outline-primary" type="button">Añadir al carrito</button>
+                    <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Añadir al carrito</button>
 
                 </div>
 
@@ -88,4 +88,26 @@ $con->close();
 </body>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+<script>
+    function addProducto(id, token){
+        let url= 'carrito.php'
+        let formData = new FormData()
+        formData.append('id', id)
+        formData.append('token', token)
+
+        fetch(url,{
+            method: 'POST',
+            body: formData,
+            mode: 'cors'
+        }).then(response => response.json())
+        .then(data =>{
+            if(data.ok){
+                let elemento = document.getElementById("num_cart")
+                elemento.innerHTML = data.numero
+            }
+        })
+    
+    }
+</script>
+
 </html>

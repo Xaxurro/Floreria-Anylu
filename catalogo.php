@@ -1,7 +1,8 @@
 <?php
     include("./Model/connection.php");
     include("./View/header.php");
-    define("KEY_TOKEN","grKfH-52.LQ*")
+    include("./Model/token.php");
+    include("./Model/configCart.php");
 ?>
 
 <!DOCTYPE html>
