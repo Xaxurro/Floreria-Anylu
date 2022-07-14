@@ -6,13 +6,14 @@
     <legend><b><i>Pedidos para el dia de hoy:</i></b></legend>
 
     <div class="table">
+    <script src="../../JS/SortTable.js"></script>
     <table>
         <tr>
-            <th>Nombre</th>
-            <th>Hora</th>
-            <th>Total Pedido($)</th>
-            <th>Descripcion del pedido</th>
-            <th>Estado</th>
+            <th onclick="sortTable(0, false)">Nombre</th>
+            <th onclick="sortTable(1, false)">Hora</th>
+            <th onclick="sortTable(2, true)">Total Pedido($)</th>
+            <th onclick="sortTable(3, true)">Descripcion del pedido</th>
+            <th onclick="sortTable(4, true)">Estado</th>
         </tr>
         <?php
         $current_day = date('Y-m-d');

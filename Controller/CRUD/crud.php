@@ -35,14 +35,15 @@
         <!-- TODO Añadir en JS la validacion del formulario-->
     </form><br><br><br>
 
-    <table>
+    <script src="../../JS/SortTable.js"></script>
+    <table id="table">
         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Descripcion</th>
-            <th>Stock</th>
-            <th>Precio</th>
-            <th>Disponible</th>
+            <th onclick="sortTable(0, true)">ID</th>
+            <th onclick="sortTable(1, false)">Nombre</th>
+            <th onclick="sortTable(2, false)">Descripcion</th>
+            <th onclick="sortTable(3, true)">Stock</th>
+            <th onclick="sortTable(4, true)">Precio</th>
+            <th onclick="sortTable(5, false)">Disponible</th>
             <th colspan="3">Modificar</th>
         </tr>
         <?php
