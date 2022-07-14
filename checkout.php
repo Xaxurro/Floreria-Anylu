@@ -44,7 +44,6 @@ while(
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Subtotal </th>
-                        
                     </tr>
                 </thead>
                 <tbody>

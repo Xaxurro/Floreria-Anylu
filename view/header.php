@@ -2,7 +2,6 @@
     include("./Model/connection.php");
     include("./Model/configCart.php");
 
-
 ?>
 <!DOCTYPE html>
 <html lang="es">
