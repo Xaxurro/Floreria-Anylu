@@ -1,4 +1,5 @@
 <?php
+    include("../Placeholder/headerAdmin.php");
     $id = $_GET["id"];
     
     if($_POST){
@@ -31,28 +32,30 @@
     <title>Modificar Producto</title>
 </head>
 <body>
-    <form action="update.php" method="post">
-        <!-- TODO Añadir en JS la validacion del formulario-->
-        <label for="nombre">Nombre: </label>
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $_GET["nombre"];?>"><br><br>
-        
-        <label for="descripcion">Descripcion: </label>
-        <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $_GET["descripcion"];?>"><br><br>
-        
-        <label for="stock">Stock: </label>
-        <input type="text" name="stock" id="stock" placeholder="Stock" value="<?php echo $_GET["stock"];?>"><br><br>
-        
-        <label for="precio">Precio: </label>
-        <input type="text" name="precio" id="precio" placeholder="Precio" value="<?php echo $_GET["precio"];?>"><br><br>
-        
-        <input type="radio" name="estado" id="estado" value="1" <?php if($_GET["estado"] == 1){echo "checked";}?>>
-        <label for="estado">Disponible</label>
-        
-        <input type="radio" name="estado" id="estado" value="0" <?php if($_GET["estado"] == 0){echo "checked";}?>>
-        <label for="estado">No Disponible</label>
-        <!-- TODO Añadir en JS la validacion del formulario-->
-
-        <button type="submit" name="id" value="<?php echo $id?>">Modificar</button>
-    </form>
+    <center>
+        <form action="update.php" method="post">
+            <!-- TODO Añadir en JS la validacion del formulario-->
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $_GET["nombre"];?>"><br><br>
+            
+            <label for="descripcion">Descripcion: </label>
+            <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $_GET["descripcion"];?>"><br><br>
+            
+            <label for="stock">Stock: </label>
+            <input type="text" name="stock" id="stock" placeholder="Stock" value="<?php echo $_GET["stock"];?>"><br><br>
+            
+            <label for="precio">Precio: </label>
+            <input type="text" name="precio" id="precio" placeholder="Precio" value="<?php echo $_GET["precio"];?>"><br><br>
+            
+            <input type="radio" name="estado" id="estado" value="1" <?php if($_GET["estado"] == 1){echo "checked";}?>>
+            <label for="estado">Disponible</label>
+            
+            <input type="radio" name="estado" id="estado" value="0" <?php if($_GET["estado"] == 0){echo "checked";}?>>
+            <label for="estado">No Disponible</label>
+            <!-- TODO Añadir en JS la validacion del formulario-->
+            
+            <button type="submit" name="id" value="<?php echo $id?>">Modificar</button>
+        </form>
+    </center>
 </body>
 </html>
