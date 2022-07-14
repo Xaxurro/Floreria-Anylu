@@ -43,4 +43,5 @@ include("./View/header.php");
             echo "Ingrese una fecha valida para su visita, intentelo nuevamente";
         }
     }
+    include("./View/footer.php");
 ?>

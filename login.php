@@ -32,21 +32,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         
     $con->close();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// include("./view/footer.php"); ?>
+include("./view/footer.php"); 
+?>
