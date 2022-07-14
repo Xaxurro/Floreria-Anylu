@@ -45,7 +45,6 @@
                                 <p class="card-text">'.$descripcion.'</p>
                                 <p class="card-text">$'.$precio.'</p>
                                 <a  href="producto.php?id='.$id.'& token='.hash_hmac('sha1',$id,KEY_TOKEN).'"  class="btn btn-primary id="boton" >Ver más</a>
-
                             </div>
                         </div>';
                     }
