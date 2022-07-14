@@ -35,7 +35,7 @@
                     
                     <button type="submit" name="opcion">Añadir</button>
                     <!-- TODO Añadir en JS la validacion del formulario-->
-                </form><br><br><br>
+                </form>
             </div>
         </fieldset>
     </center>
@@ -101,5 +101,6 @@
             ?>
         </div>
     </fieldset>
-</body>
-</html>
+<?php 
+    include("../Placeholder/footerAdmin.php");
+?>

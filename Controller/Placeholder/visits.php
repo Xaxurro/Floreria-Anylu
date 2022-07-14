@@ -39,3 +39,6 @@
         ?>
     </div>
 </fieldset>
+<?php 
+    include("../Placeholder/footerAdmin.php");
+?>

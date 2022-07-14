@@ -57,5 +57,6 @@
             <button type="submit" name="id" value="<?php echo $id?>">Modificar</button>
         </form>
     </center>
-</body>
-</html>
+<?php 
+    include("../Placeholder/footerAdmin.php");
+?>

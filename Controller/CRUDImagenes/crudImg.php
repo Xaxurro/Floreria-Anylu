@@ -47,7 +47,7 @@
                             <td><img height='125px' width='125px' src='data:image/jpg;base64,".base64_encode($row["foto"])."'></td>
                             <td>
                             <form action='updateImg.php' method='post' enctype='multipart/form-data'>
-                            <input type='file' name='foto' id='foto'>
+                            <input type='file' name='foto' id='foto' required>
                             <input type='hidden' name='id_producto' value='".$id_producto."'>
                             <button type='submit' name='id_foto' value='".$row["id_foto"]."'>Modificar</button>
                             </form>
@@ -63,5 +63,6 @@
             ?>
         </div>
     </fieldset>
-</body>
-</html>
+<?php 
+    include("../Placeholder/footerAdmin.php");
+?>
