@@ -22,16 +22,16 @@
                 <form action="crud.php" method="post">
                     <!-- TODO Añadir en JS la validacion del formulario-->
                     <label for="nombre">Nombre: </label>
-                    <input type="text" name="nombre" id="nombre" placeholder="Nombre"><br><br>
+                    <input type="text" name="nombre" id="nombre" placeholder="Nombre" required><br><br>
                 
                     <label for="descripcion">Descripcion: </label>
-                    <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion"><br><br>
+                    <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" required><br><br>
                     
                     <label for="stock">Stock: </label>
-                    <input type="text" name="stock" id="stock" placeholder="Stock"><br><br>
+                    <input type="text" name="stock" id="stock" placeholder="Stock" required><br><br>
                     
                     <label for="precio">Precio: </label>
-                    <input type="text" name="precio" id="precio" placeholder="Precio"><br><br>
+                    <input type="text" name="precio" id="precio" placeholder="Precio" required><br><br>
                     
                     <button type="submit" name="opcion">Añadir</button>
                     <!-- TODO Añadir en JS la validacion del formulario-->
@@ -41,7 +41,8 @@
     </center>
     
     <br><br>
-    <script src="../../JS/SortTable.js"></script>
+    <script src="../../JS/sortTable.js"></script>
+    <script src="../../JS/filterTable.js"></script>
     <br><br>
 
     <fieldset>
@@ -51,7 +52,8 @@
                 $sql = "SELECT * FROM producto;";
                 $result = $con->query($sql);
                 if($result->num_rows > 0){
-                    echo '<center><table id="table">
+                    echo '<input type="text" id="filter" onkeyup="filterTable()" placeholder="Nombre del producto a buscar..."><br><br>
+                    <center><table id="table">
                     <tr>
                         <th onclick="sortTable(0, true)">ID <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-up" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M11.5 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L11 2.707V14.5a.5.5 0 0 0 .5.5zm-7-14a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L4 13.293V1.5a.5.5 0 0 1 .5-.5z"/>
