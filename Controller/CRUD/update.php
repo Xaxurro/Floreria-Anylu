@@ -36,16 +36,16 @@
         <form action="update.php" method="post">
             <!-- TODO Añadir en JS la validacion del formulario-->
             <label for="nombre">Nombre: </label>
-            <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $_GET["nombre"];?>"><br><br>
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $_GET["nombre"];?>" required><br><br>
             
             <label for="descripcion">Descripcion: </label>
-            <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $_GET["descripcion"];?>"><br><br>
+            <input type="text" name="descripcion" id="descripcion" placeholder="Descripcion" value="<?php echo $_GET["descripcion"];?>" required><br><br>
             
             <label for="stock">Stock: </label>
-            <input type="text" name="stock" id="stock" placeholder="Stock" value="<?php echo $_GET["stock"];?>"><br><br>
+            <input type="text" name="stock" id="stock" placeholder="Stock" value="<?php echo $_GET["stock"];?>" required><br><br>
             
             <label for="precio">Precio: </label>
-            <input type="text" name="precio" id="precio" placeholder="Precio" value="<?php echo $_GET["precio"];?>"><br><br>
+            <input type="text" name="precio" id="precio" placeholder="Precio" value="<?php echo $_GET["precio"];?>" required><br><br>
             
             <input type="radio" name="estado" id="estado" value="1" <?php if($_GET["estado"] == 1){echo "checked";}?>>
             <label for="estado">Disponible</label>

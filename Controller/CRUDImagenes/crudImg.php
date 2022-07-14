@@ -17,7 +17,7 @@
     <form action="updateImg.php" method="post" enctype="multipart/form-data">
         <center>
             <label for="foto">Imagen: </label>
-            <input type="file" name="foto" id="foto"><br>
+            <input type="file" name="foto" id="foto" required><br>
             
             <button type="submit" name="id_producto" value="<?php echo $id_producto?>">Añadir</button>
         </center>
