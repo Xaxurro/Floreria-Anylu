@@ -1,6 +1,6 @@
 <?php
 
-include("./Model/token.php");
+include("../Model/token.php");
 
 if(isset($_POST['id'])){
     $id = $_POST['id'];
@@ -26,3 +26,4 @@ if(isset($_POST['id'])){
 }
 
 echo json_encode($datos);
+?>

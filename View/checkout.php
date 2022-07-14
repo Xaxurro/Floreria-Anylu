@@ -1,7 +1,7 @@
 <?php
-include("./View/header.php");
+include("./Templates/header.php");
 
-include("./Model/token.php");
+include("../Model/token.php");
 
 $producto = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 $lista_carrito = array();

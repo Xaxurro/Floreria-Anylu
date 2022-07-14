@@ -1,7 +1,7 @@
 <?php 
 
-include("./Model/connection.php");
-include("./View/header.php");
+include("../Model/connection.php");
+include("./Templates/header.php");
 
 ?>
 <fieldset>
@@ -43,5 +43,5 @@ include("./View/header.php");
             echo "Ingrese una fecha valida para su visita, intentelo nuevamente";
         }
     }
-    include("./View/footer.php");
+    include("./Templates/footer.php");
 ?>
