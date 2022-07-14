@@ -44,7 +44,7 @@ while(
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Subtotal </th>
-                        <th></th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -57,11 +57,10 @@ while(
                             $_nombre = $producto['nombre'];
                             $_stock = $producto['stock'];
                             $_precio = $producto['precio'];
+                            $cantidad = $producto['cantidad'];
                             $subtotal = $cantidad * $_precio;
                             $total += $subtotal;
-                        }
-                    }
-                    ?>
+                        ?>
                     <tr>
                         <td> <?php echo $nombre;?> </td>
                         <td>$<?php echo $_precio;?> </td>
@@ -69,13 +68,26 @@ while(
                             <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" size="5" id="cantidad_<?php echo $_id; ?>" onchange="">
                         </td>
                         <td> 
-                            <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]"> </div>
+                            <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]">$<?php echo $subtotal;?> </div>
+                        </td>
+                        <td> <a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-ds-toogle="modal" data-bs-target="eliminaModal">Eliminar </a> </td>
+                    </tr>
+                    <?php } ?>
+
+                    <tr> 
+                        <td colspan="3"> </td>
+                        <td colspan="2"> 
+                            <p class="h3" id="total">$<?php echo $total; ?> </p>
                         </td>
                     </tr>
+                    <div>
+                        <div class="col-md-5 offset-md-7 d-grid gap-2">
+                            <button class="btn btn-primary btn-lg">Reservar Productos</button>
+                    </div>
                 </tbody>
+                <?php } ?>
             </table>
         </div>
-
     
     </div>
 </body>
