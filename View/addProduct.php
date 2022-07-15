@@ -29,12 +29,13 @@
         if($result->num_rows > 0){
             header("Location: ./checkout.php");
         }
-
         $sql = "INSERT INTO carrito_producto VALUES ($id_carrito, $id_producto, $cantidad);";
         if($con->query($sql)){
             echo "Se insertaron los datos correctamente";
+            header("Location: ./catalogo.php");
         } else {
             echo "Error al Insertar Datos";
         }
+        
     }
 ?>

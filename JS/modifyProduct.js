@@ -18,8 +18,8 @@ function calculateTotal(){
     label = document.getElementById("total");
     total = 0;
 
-    for(let x = 1; x < fila.length-1; x++){
+    for(let x = 1; x < fila.length; x++){
         total += parseInt(fila[x].getElementsByTagName("td")[4].innerHTML.slice(1));
     }
-    label.innerHTML = "$" + total;
+    label.innerHTML = "<center><strong>Total: $" + total + "</strong></center>";
 }
