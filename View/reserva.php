@@ -36,8 +36,8 @@
                             }
                         ?>
                         <tr>
-                            <td colspan="3">Total:</td>
-                            <td><label id="total">$0</label></td>
+                            <td colspan="2">Total:</td>
+                            <td><label id="total"><?php echo $_SESSION["total"]; ?></label></td>
                         </tr>
                     </tbody>
                 </table>

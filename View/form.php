@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include("./Templates/header.php");
     include("../Model/token.php");
 
@@ -21,15 +22,15 @@
                 }
             }
         } 
-    $nombre = $_POST['nombre'];
-    $rut = $_POST['rut'];
-    $correo = $_POST['email'];
-    $telefono = $_POST['telefono'];
-    $sql = "INSERT INTO reservas (rut, nombre, correo, telefono, id_producto, nombre_producto, cantidad_producto, valor) VALUES ('$RUT','$nombre','$correo','$telefono','$producto[id_producto]','$producto["nombre"]','$producto["cantidad"]', 5);";
-    if(!($con->query($sql))) {
-        echo "No se inserto<br><br>";
+        $nombre = $_POST['nombre'];
+        $rut = $_POST['rut'];
+        $correo = $_POST['email'];
+        $telefono = $_POST['telefono'];
+        $sql = "INSERT INTO reservas (rut, nombre, correo, telefono, id_producto, nombre_producto, cantidad_producto, valor) VALUES ('$RUT','$nombre','$correo','$telefono','".$producto["id_producto"]."','".$producto["nombre"]."','".$producto["cantidad"]."', 5);";
+        if(!($con->query($sql))) {
+            echo "No se inserto<br><br>";
+        }
     }
-}
 
 ?>
 

@@ -6,7 +6,7 @@
 <body>
     <div class="container">
         <div class="table-responsive">
-            <form action="form.php" method="post">
+            <form action="reserva.php" method="post">
                 <table class="table" id="table">
                     <thead>
                         <tr>
@@ -35,7 +35,7 @@
                                             <td><input type='number' name='a' id='".$nRow."' min='1' max='10' value='".$row["cantidad"]."' onchange='updatePrice($nRow)'></td>
                                             <td>$".($row["cantidad"] * $producto["precio"])."</td>
                                         </tr>";
-                                        $total += (int)$producto["precio"] * (int)$row["cantidad"];
+                                        $_SESSION["total"] = $total += (int)$producto["precio"] * (int)$row["cantidad"];
                                     }
                                     $nRow++;
                                 }
