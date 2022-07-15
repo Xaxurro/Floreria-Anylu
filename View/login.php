@@ -22,7 +22,7 @@
         <legend><b><i>Inicie Sesion:</i></b></legend>
         <center>
             <br>
-            <form action="login.php" method="POST">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                 <label for="id">ID:</label><br>
                 <input type="text" name="id" maxlength="255"><br><br>
                 

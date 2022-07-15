@@ -33,8 +33,7 @@
 </head>
 <body>
     <center>
-        <form action="update.php" method="post">
-            <!-- TODO Añadir en JS la validacion del formulario-->
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label for="nombre">Nombre: </label>
             <input type="text" name="nombre" id="nombre" placeholder="Nombre" value="<?php echo $_GET["nombre"];?>" required><br><br>
             
@@ -52,7 +51,6 @@
             
             <input type="radio" name="estado" id="estado" value="0" <?php if($_GET["estado"] == 0){echo "checked";}?>>
             <label for="estado">No Disponible</label>
-            <!-- TODO Añadir en JS la validacion del formulario-->
             
             <button type="submit" name="id" value="<?php echo $id?>">Modificar</button>
         </form>

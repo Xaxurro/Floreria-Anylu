@@ -19,8 +19,7 @@
         <fieldset>
             <legend><b><i>Productos:</i></b></legend>
             <div class="table">
-                <form action="crud.php" method="post">
-                    <!-- TODO Añadir en JS la validacion del formulario-->
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
                     <label for="nombre">Nombre: </label>
                     <input type="text" name="nombre" id="nombre" placeholder="Nombre" required><br><br>
                 
@@ -34,7 +33,6 @@
                     <input type="text" name="precio" id="precio" placeholder="Precio" required><br><br>
                     
                     <button type="submit" name="opcion">Añadir</button>
-                    <!-- TODO Añadir en JS la validacion del formulario-->
                 </form>
             </div>
         </fieldset>
