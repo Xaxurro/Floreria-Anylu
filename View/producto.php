@@ -1,7 +1,7 @@
 <?php
 include('../Model/connection.php');
 include('./Templates/header.php');
-include("../Model/token.php");
+include("../Model/config.php");
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 $token = isset($_GET['token']) ? $_GET['token'] : '';
@@ -10,7 +10,7 @@ if($id == '' || $token == ''){
     echo 'Error al procesar la petición';
     exit;
 }else{
-    $token_tmp = hash_hmac('sha1',$id,KEY_TOKEN );
+    $token_tmp = hash_hmac('sha1',$id,'KEY_TOKEN' );
     
     if($token == $token_tmp){
 
@@ -54,7 +54,6 @@ $con->close();
             }else{
                 echo '<img src="../src/nodisp.png" class="card-img-top" alt="...">';
             }
-            
             ?>
         </div>
         <div class="col-md-6 order-md-2">
@@ -65,16 +64,11 @@ $con->close();
                 <?php echo $descripcion; ?>
             </p>
             <div class="d-grid gap-3 col-10 mx-auto">
-                <button class="btn btn-primary" type="button">Comprar ahora</button>
+                <a href="checkout.php" ><button class="btn btn-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Comprar ahora</button> </a>
                 <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Añadir al carrito</button>
-
             </div>
-
         </div>
-
-
     </div>
-
 </div>
 <script src="../JS/addProduct.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

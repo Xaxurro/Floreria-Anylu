@@ -1,6 +1,5 @@
 <?php include("./Templates/header.php"); 
-include("../Model/configCart.php");
-session_start();
+
 ?>
 <section id="cuerpo">
     <a></a>

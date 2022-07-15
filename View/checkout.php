@@ -1,7 +1,7 @@
 <?php
 include("./Templates/header.php");
 
-include("../Model/token.php");
+include("../Model/config.php");
 
 $producto = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
 $lista_carrito = array();
@@ -13,18 +13,6 @@ if($producto != null){
         
     }
 }
-
-/*
-while(
-    $nombre = $consulta['nombre'];
-    $descripcion = $consulta['descripcion'];
-    $stock = $consulta['stock'];
-    $precio = $consulta['precio'];
-    $estado = $consulta['estado'];
-    $id = $consulta['id'];
-
-}
-*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
