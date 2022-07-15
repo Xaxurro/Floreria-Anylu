@@ -42,6 +42,18 @@ CREATE TABLE visita(
     hora VARCHAR (10)
 );
 
+CREATE TABLE reservas(
+    rut VARCHAR(15),
+    nombre VARCHAR(70),
+    correo VARCHAR(30),
+    telefono VARCHAR(9),
+    id_producto INT(5),
+    nombre_producto VARCHAR(50),
+    cantidad_producto INT(3),
+    valor INT(10),
+
+)
+
 ALTER TABLE producto
 ADD CONSTRAINT PK_product PRIMARY KEY (id);
 ALTER TABLE producto MODIFY id INTEGER NOT NULL AUTO_INCREMENT;

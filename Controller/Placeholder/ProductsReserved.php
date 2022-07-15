@@ -3,7 +3,8 @@
     include("../Placeholder/headerAdmin.php");
 ?>
 
-
+<script src="../../JS/sortTable.js"></script>
+<script src="../../JS/filterTable.js"></script>
 <fieldset>
         <legend><b><i>Productos Reservados:</i></b></legend>
         <div class="table">
@@ -54,7 +55,7 @@
                     }
                     echo"</table></center>";
                 } else {
-                    echo "<center><strong>No hay Productos en la base de datos.</strong></center>";
+                    echo "<center><strong>No hay Productos reservados en la base de datos.</strong></center>";
                 }
             ?>
         </div>
