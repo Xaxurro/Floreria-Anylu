@@ -27,7 +27,7 @@
                     </tr>";
                 }
             }
-        } 
+        }
         $nombre = $_POST['nombre'];
         $rut = $_POST['rut'];
         $correo = $_POST['email'];
