@@ -1,5 +1,5 @@
 function addProducto(id, token){
-    let url= 'carrito.php'
+    let url= '../View/carrito.php'
     let formData = new FormData()
     formData.append('id', id)
     formData.append('token', token)

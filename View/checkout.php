@@ -64,12 +64,12 @@ while(
                         <td> <?php echo $nombre;?> </td>
                         <td>$<?php echo $_precio;?> </td>
                         <td>
-                            <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" size="5" id="cantidad_<?php echo $_id; ?>" onchange="">
+                            <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" size="5" id="cantidad_<?php echo $_id; ?>" onchange="actualizarCantidad(this.value,<?php echo $_id; ?>)">
                         </td>
                         <td> 
                             <div id="subtotal_<?php echo $_id; ?>" name="subtotal[]">$<?php echo $subtotal;?> </div>
                         </td>
-                        <td> <a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-ds-toogle="modal" data-bs-target="eliminaModal">Eliminar </a> </td>
+                        <td> <a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $_id; ?>" data-ds-toggle="modal" data-bs-target="#eliminaModal">Eliminar </a> </td>
                     </tr>
                     <?php } ?>
 
@@ -90,4 +90,22 @@ while(
     
     </div>
 </body>
+<div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ¿Desea eliminar el producto?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button id="btn-elimina" type="button" class="btn btn-danger" onclick="elimina()" >Eliminar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../JS/modify Product.js"></script>
 </html>
