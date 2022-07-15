@@ -1,5 +1,4 @@
 <?php
-    include("../Model/connection.php");
     include("./Templates/header.php");
     include("../Model/config.php");
 

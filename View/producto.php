@@ -1,5 +1,4 @@
 <?php
-include('../Model/connection.php');
 include('./Templates/header.php');
 include("../Model/config.php");
 
@@ -25,7 +24,7 @@ if($id == null || $token == null){
             $stock = $consulta['stock'];
             $precio = $consulta['precio'];
             $estado = $consulta['estado'];
-            
+
             $sql = "SELECT * FROM foto where id_producto=$id LIMIT 1;";
             $resultFoto = $con->query($sql);
             $foto = $resultFoto->fetch_assoc();
