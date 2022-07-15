@@ -2,7 +2,7 @@
     include("../Model/connection.php");
     include("../Model/config.php");
 
-    session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -4,10 +4,11 @@ include("./Templates/header.php");
 include("../Model/config.php");
 
 $producto = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+print_r($_SESSION);
 $lista_carrito = array();
 if($producto != null){
-    foreach($producto as $clase => $cantidad){
-        $sql    ="SELECT id, nombre, precio, $cantidad AS cantidad FROM producto";
+    foreach($producto as $clave => $cantidad){
+        $sql    ="SELECT id, nombre, precio, $cantidad AS cantidad FROM producto ";
         $resultProducto = $con->query($sql);
         $lista_carrito[] = $resultProducto->fetch_assoc();
         
@@ -22,7 +23,7 @@ if($producto != null){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<main>
     <div class="container">
         <div class="table-responsive">
             <table class="table">
@@ -42,14 +43,13 @@ if($producto != null){
                         foreach($lista_carrito as $producto){
                             $_id = $producto['id'];
                             $_nombre = $producto['nombre'];
-                            $_stock = $producto['stock'];
                             $_precio = $producto['precio'];
                             $cantidad = $producto['cantidad'];
                             $subtotal = $cantidad * $_precio;
                             $total += $subtotal;
                         ?>
                     <tr>
-                        <td> <?php echo $nombre;?> </td>
+                        <td> <?php echo $_nombre;?> </td>
                         <td>$<?php echo $_precio;?> </td>
                         <td>
                             <input type="number" min="1" max="10" step="1" value="<?php echo $cantidad; ?>" size="5" id="cantidad_<?php echo $_id; ?>" onchange="actualizarCantidad(this.value,<?php echo $_id; ?>)">
@@ -77,7 +77,7 @@ if($producto != null){
         </div>
     
     </div>
-</body>
+</main>
 <div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-sm">
         <div class="modal-content">

@@ -9,7 +9,7 @@ if($id == null || $token == null){
     echo 'Error al procesar la petición';
     exit;
 }else{
-    $token_tmp = hash_hmac('sha1',$id,'KEY_TOKEN' );
+    $token_tmp = hash_hmac('sha1',$id,$KEY_TOKEN);
     
     if($token == $token_tmp){
         $sql    ="SELECT count(id) FROM producto;";
@@ -39,7 +39,7 @@ if($id == null || $token == null){
         }
     }
 }
-$con->close();
+
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -59,7 +59,7 @@ $con->close();
                 <?php echo $descripcion; ?>
             </p>
             <div class="d-grid gap-3 col-10 mx-auto">
-                <a href="checkout.php" ><button class="btn btn-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Comprar ahora</button> </a>
+                <button class="btn btn-primary" type="button">Comprar ahora</button>
                 <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Añadir al carrito</button>
             </div>
         </div>
