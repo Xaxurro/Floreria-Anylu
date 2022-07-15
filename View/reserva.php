@@ -39,14 +39,11 @@
                                     }
                                 }
                             }
-                        ?>
-                        <tr>
-                            
-                            <td colspan="3"><strong>Total:</strong></td>
-                            <td><label id="total"><strong>$<?php echo $_SESSION["total"]; ?></strong></label></td>
-                        </tr>
+                        ?>    
                     </tbody>
                 </table><br>
+                <br>
+                <label id="total"><center><strong>Total: $<?php echo $_SESSION["total"]; ?></strong></center></label><br>
                 <center><button type="submit">Reservar </button></center>
             </form>
         </div>

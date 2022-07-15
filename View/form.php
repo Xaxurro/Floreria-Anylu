@@ -1,5 +1,4 @@
 <?php
-    session_start();
     include("./Templates/header.php");
     include("../Model/token.php");
 
@@ -36,13 +35,13 @@
 
 <body>
     <form method="POST" action="form.php">
-        <h1>INGRESE SUS DATOS</h1>
-        <a>NOMBRE: <input type="text" name="nombre" maxlength="255"> </input> </a>
-        <a>RUT: <input type="text" name="rut" maxlength="255"> </input> </a>
-        <a>CORREO: <input type="text" name="email" maxlength="255"> </input> </a>
-        <a>TELEFONO: <input type="text" name="telefono" maxlength="255"> </input> </a>
+        <center><h1>INGRESE SUS DATOS</h1><br>
+        <a>NOMBRE: <input type="text" name="nombre" maxlength="255"> </input></a><br><br>
+        <a>RUT: <input type="text" name="rut" maxlength="255"> </input></a><br><br>
+        <a>CORREO: <input type="text" name="email" maxlength="255"> </input></a><br><br>
+        <a>TELEFONO: <input type="text" name="telefono" maxlength="255"> </input></a><br><br>
         
-        <button type="submit" value="Enviar"></button>
+        <button type="submit" value="Enviar">Enviar</button></center>
     </form>
 </body>
 <?php

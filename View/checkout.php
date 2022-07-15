@@ -25,7 +25,7 @@
                         <tbody>
                         <?php
                     $nRow = 1;
-                    $total = 0;
+                    $_SESSION["total"] = 0;
                     while($row = $resultCart->fetch_assoc()){
                         $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
                         $resultProducto = $con->query($sql);
@@ -37,13 +37,13 @@
                                 <td><input type='number' name="cantidad[]" id='<?php echo $nRow;?>' min='1' max='10' value='<?php echo $row["cantidad"]?>' onchange='updatePrice(<?php echo $nRow?>)'></td>
                                 <td>$<?php echo ($row["cantidad"] * $producto["precio"])?></td>
                             </tr><?php 
-                            $_SESSION["total"] = $total += (int)$producto["precio"] * (int)$row["cantidad"];
+                            $_SESSION["total"] += (int)$producto["precio"] * (int)$row["cantidad"];
                         }
                         $nRow++;
                     }
                     ?></tbody>
                         </table><br>
-                        <label id="total"><center><strong>Total: $<?php echo $total; ?></strong></center></label><br>
+                        <label id="total"><center><strong>Total: $<?php echo $_SESSION["total"]; ?></strong></center></label><br>
                         <center><button type="submit">Enviar</button></center>
                         </form>
                     <?php
