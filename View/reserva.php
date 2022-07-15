@@ -36,6 +36,7 @@
                                             <td>$<?php echo ($cantidad[$i] * $producto["precio"]); $i++;?></td>
                                         </tr>
                                         <?php
+                                        $_SESSION["total"] += (int)$producto["precio"] * (int)$row["cantidad"];
                                     }
                                 }
                             }

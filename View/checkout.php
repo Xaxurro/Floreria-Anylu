@@ -48,6 +48,7 @@
                         </form>
                     <?php
                 } else {
+                    $_SESSION["total"] = 0;
                     ?><center>No hay productos asociados al carrito.</center><?php
                 }
             ?>
