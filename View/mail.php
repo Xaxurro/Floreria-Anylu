@@ -1,11 +1,30 @@
 <?php 
-
 include("../Model/connection.php");
 include("./Templates/header.php");
+$Mail = $Date = $Hour = $Name = "";
+if ($_POST)
+{
+    $Mail = $_POST["Mail"];
+    $Date = $_POST["Date"];
+    $Hour = $_POST["Hour"];
+    $Name = $_POST["Name"];
 
+    if (!empty($Date)){
+
+        $sql = "INSERT INTO visita VALUES ('$Name','$Mail','$Date','$Hour');";
+        
+        if ($con -> query($sql)=== TRUE){
+            echo "Visita agendada!.";
+        }else{
+            echo "Hubo un problema intentelo denuevo.";
+        }
+    }else{
+        echo "Ingrese una fecha valida para su visita, intentelo nuevamente";
+    }
+}
 ?>
 <fieldset>
-    <legend><b>Datos:</b></legend>
+    <legend><b>Agendar Visita:</b></legend>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <br>
         <label for="name">Nombre:</label><br>
@@ -22,26 +41,6 @@ include("./Templates/header.php");
 </fieldset>
 
 <?php 
-    $Mail = $Date = $Hour = $Name = "";
-    if ($_POST)
-    {
-        $Mail = $_POST["Mail"];
-        $Date = $_POST["Date"];
-        $Hour = $_POST["Hour"];
-        $Name = $_POST["Name"];
-
-        if (!empty($Date)){
-
-            $sql = "INSERT INTO visita VALUES ('$Name','$Mail','$Date','$Hour');";
-            
-            if ($con -> query($sql)=== TRUE){
-                echo "Visita agendada!.";
-            }else{
-                echo "Hubo un problema intentelo denuevo.";
-            }
-        }else{
-            echo "Ingrese una fecha valida para su visita, intentelo nuevamente";
-        }
-    }
+    
     include("./Templates/footer.php");
 ?>

@@ -31,7 +31,7 @@ if($id == '' || $token == ''){
             if($resultFoto->num_rows > 0){
                 $imagen = $foto['foto']; 
             }else{
-                $imagen = 'src/nodisp.png';
+                $imagen = '../src/nodisp.png';
             }
         } else {
             echo 'Error al procesar la petición';

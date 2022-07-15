@@ -20,7 +20,7 @@
 ?>
     <center>
         <form action="login.php" method="POST">
-            <label for="id">id:</label><br>
+            <label for="id">ID:</label><br>
             <input type="text" name="id" maxlength="255"><br><br>
             
             <label for="password">Contraseña:</label><br>
