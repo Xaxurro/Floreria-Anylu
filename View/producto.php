@@ -1,45 +1,45 @@
 <?php
-include('./Templates/header.php');
-include("../Model/config.php");
+    include('./Templates/header.php');
+    include('../Model/token.php');
 
-$id = isset($_GET['id']) ? $_GET['id'] : null;
-$token = isset($_GET['token']) ? $_GET['token'] : null;
+    $id = isset($_GET['id']) ? $_GET['id'] : null;
+    $token = isset($_GET['token']) ? $_GET['token'] : null;
 
-if($id == null || $token == null){
-    echo 'Error al procesar la petición';
-    exit;
-}else{
-    $token_tmp = hash_hmac('sha1',$id,'KEY_TOKEN' );
-    
-    if($token == $token_tmp){
-        $sql    ="SELECT count(id) FROM producto;";
-        $result = $con->query($sql);
-        if($result->num_rows > 0){
-            $sql    ="SELECT * FROM producto where id = $id;";
-            $resultProducto = $con->query($sql);
-            $consulta = $resultProducto->fetch_assoc();
+    if($id == null || $token == null){
+        echo 'Error al procesar la petición';
+        exit;
+    }else{
+        $token_tmp = hash_hmac('sha1', $id, KEY_TOKEN);
+        
+        if($token == $token_tmp){
+            $sql    ="SELECT count(id) FROM producto;";
+            $result = $con->query($sql);
+            if($result->num_rows > 0){
+                $sql    ="SELECT * FROM producto where id = $id;";
+                $resultProducto = $con->query($sql);
+                $consulta = $resultProducto->fetch_assoc();
 
-            $nombre = $consulta['nombre'];
-            $descripcion = $consulta['descripcion'];
-            $stock = $consulta['stock'];
-            $precio = $consulta['precio'];
-            $estado = $consulta['estado'];
+                $nombre = $consulta['nombre'];
+                $descripcion = $consulta['descripcion'];
+                $stock = $consulta['stock'];
+                $precio = $consulta['precio'];
+                $estado = $consulta['estado'];
 
-            $sql = "SELECT * FROM foto where id_producto=$id LIMIT 1;";
-            $resultFoto = $con->query($sql);
-            $foto = $resultFoto->fetch_assoc();
-            if($resultFoto->num_rows > 0){
-                $imagen = "data:image/jpg;base64,".base64_encode($foto['foto']); 
-            }else{
-                $imagen = '../src/nodisp.png';
+                $sql = "SELECT * FROM foto where id_producto=$id LIMIT 1;";
+                $resultFoto = $con->query($sql);
+                $foto = $resultFoto->fetch_assoc();
+                if($resultFoto->num_rows > 0){
+                    $imagen = "data:image/jpg;base64,".base64_encode($foto['foto']); 
+                }else{
+                    $imagen = '../src/nodisp.png';
+                }
+            } else {
+                echo 'No hay productos disponibles.';
+                exit;
             }
-        } else {
-            echo 'No hay productos disponibles.';
-            exit;
         }
     }
-}
-$con->close();
+    $con->close();
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -59,8 +59,12 @@ $con->close();
                 <?php echo $descripcion; ?>
             </p>
             <div class="d-grid gap-3 col-10 mx-auto">
-                <a href="checkout.php" ><button class="btn btn-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Comprar ahora</button> </a>
-                <button class="btn btn-outline-primary" type="button" onclick="addProducto(<?php echo $id; ?>,'<?php echo $token_tmp; ?>')">Añadir al carrito</button>
+                <form action="addProduct.php" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id;?>">
+                    <input type="number" name="cantidad" id="cantidad" min="1" value="1"><br><br>
+                    <a href="checkout.php" ><button class="btn btn-primary" type="button">Comprar ahora</button></a>
+                    <button class="btn btn-outline-primary" type="submit">Añadir al carrito</button>
+                </form>
             </div>
         </div>
     </div>

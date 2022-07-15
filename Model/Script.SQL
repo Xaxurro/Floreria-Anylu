@@ -19,6 +19,12 @@ CREATE TABLE foto(
 
 CREATE TABLE carrito(
     id_carrito int(7),
+    usuario varchar(255),
+    confirmado int(1)
+);
+
+CREATE TABLE carrito_producto(
+    id_carrito int(7),
     id_producto int(5),
     cantidad int(3)
 );
@@ -45,7 +51,7 @@ ADD CONSTRAINT PK_foto PRIMARY KEY (id_foto);
 ALTER TABLE foto MODIFY id_foto INTEGER NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE carrito
-ADD CONSTRAINT PK_carrito PRIMARY KEY (id_carrito, id_producto);
+ADD CONSTRAINT PK_carrito PRIMARY KEY (id_carrito);
 ALTER TABLE carrito MODIFY id_carrito INTEGER NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE admin
@@ -53,8 +59,11 @@ ADD CONSTRAINT PK_admin PRIMARY KEY (id_admin);
 ALTER TABLE admin MODIFY id_admin INTEGER NOT NULL AUTO_INCREMENT;
 
 
-ALTER TABLE carrito
-ADD CONSTRAINT FK_carrito_producto FOREIGN KEY (id_producto) REFERENCES producto(id);
+ALTER TABLE carrito_producto
+ADD CONSTRAINT FK_carrito_producto_producto FOREIGN KEY (id_producto) REFERENCES producto(id);
+
+ALTER TABLE carrito_producto
+ADD CONSTRAINT FK_carrito_producto_carrito FOREIGN KEY (id_carrito) REFERENCES carrito(id_carrito);
 
 ALTER TABLE foto
 ADD CONSTRAINT FK_foto_producto FOREIGN KEY (id_producto) REFERENCES producto(id);

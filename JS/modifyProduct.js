@@ -1,62 +1,29 @@
-let eliminarModal = document.getElementById('eliminaModal')
-eliminarModal.addEventListener('show.bs.modal', function(event){
-    let button = event.relatedTarget
-    let id = button.getAttribute('data-bs-id')
-    let buttonElimina = eliminarModal.querySelector('modal-footer #btn-elimina')
-    buttonElimina.value = id 
-})
+function updatePrice(n) {
+    let tabla, fila, precio, cantidad, subtotal;
+    tabla = document.getElementById("table");
+    fila = tabla.rows;
 
-function actualizarCantidad(cantidad,id){
-    let url= '../View/updateCart.php'
-    let formData = new FormData()
-    formData.append('action', agregar)
-    formData.append('id', id)
-    formData.append('cantidad', cantidad)
+    precio = fila[n].getElementsByTagName("td")[1].innerHTML.slice(1);
+    cantidad = document.getElementById(n.toString()).value;
+    subtotal = fila[n].getElementsByTagName("td")[3];
 
-    fetch(url,{
-        method: 'POST',
-        body: formData,
-        mode: 'cors'
-    }).then(response => response.json())
-    .then(data =>{
-        if(data.ok){
-            let divsubtotal = document.getElementById('subtotal_' + id)
-            divsubtotal.innerHTML = data.sub
+    console.log(precio);
+    console.log(cantidad);
+    console.log(subtotal);
 
-            let total = 0
-            let list = document.getElementsByName('subtotal[]')
-
-            for(let i =0; i < list.length; i++){
-                total += parseFloat(list[i].innerHTML.replace(/[$,]/g, ''))
-            }
-            total = new Intl.NumberFormat('en-US',{
-                minimumFractionDigits: 2
-            }).format(total)
-            document.getElementById('total').innerHTML = '<?php echo "$";?>' + total 
-
-        }
-    })
-
+    subtotal.textContent = "$" + parseInt(precio) * cantidad;
+    calculateTotal();
 }
 
-function eliminar(){
-    let botonElimina = document.getElementById('btn-elimina')
-    let id = botonElimina.value
+function calculateTotal(){
+    let tabla, fila, total, label;
+    tabla = document.getElementById("table");
+    fila = tabla.rows;
+    label = document.getElementById("total");
+    total = 0;
 
-    let url= '../View/updateCart.php'
-    let formData = new FormData()
-    formData.append('action', eliminar)
-    formData.append('id', id)
-
-    fetch(url,{
-        method: 'POST',
-        body: formData,
-        mode: 'cors'
-    }).then(response => response.json())
-    .then(data =>{
-        if(data.ok){
-            location.reload()
-        }
-    })
-
+    for(let x = 0; x < fila.lenght; x++){
+        total += parseInt(fila[x].getElementsByTagName("td")[3]);
+    }
+    label.innerHTML = "$" + total;
 }

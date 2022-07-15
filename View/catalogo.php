@@ -1,7 +1,6 @@
 <?php
     include("./Templates/header.php");
-    include("../Model/config.php");
-
+    include('../Model/token.php');
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
@@ -37,7 +36,7 @@
                                 <h5 class="card-title">'.$nombre.'</h5>
                                 <p class="card-text">'.$descripcion.'</p>
                                 <p class="card-text">$'.$precio.'</p>
-                                <a  href="producto.php?id='.$id.'& token='.hash_hmac('sha1',$id,'KEY_TOKEN').'"  class="btn btn-primary id="boton" >Ver más</a>
+                                <a  href="producto.php?id='.$id.'& token='.hash_hmac('sha1', $id, KEY_TOKEN).'"  class="btn btn-primary id="boton" >Ver más</a>
                             </div>
                         </div>';
                     }
