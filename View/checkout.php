@@ -10,10 +10,11 @@
                 <table class="table" id="table">
                     <thead>
                         <tr>
-                            <th>Producto </th>
+                            <th>Opcion</th>
+                            <th>Producto</th>
                             <th>Precio</th>
                             <th>Cantidad</th>
-                            <th>Subtotal </th>
+                            <th>Subtotal</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,50 +23,35 @@
                             $resultCart = $con->query($sql);
                             if($resultCart->num_rows > 0){
                                 $nRow = 1;
+                                $total = 0;
                                 while($row = $resultCart->fetch_assoc()){
                                     $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
                                     $resultProducto = $con->query($sql);
                                     if($producto = $resultProducto->fetch_assoc()){
                                         echo "<tr>
+                                            <td><a href='deleteProduct.php?id=".$row["id_producto"]."'><strong>Eliminar</strong></a></td>
                                             <td>".$producto["nombre"]."</td>
                                             <td>$".$producto["precio"]."</td>
                                             <td><input type='number' name='a' id='".$nRow."' min='1' max='10' value='".$row["cantidad"]."' onchange='updatePrice($nRow)'></td>
                                             <td>$".($row["cantidad"] * $producto["precio"])."</td>
                                         </tr>";
+                                        $total += (int)$producto["precio"] * (int)$row["cantidad"];
                                     }
                                     $nRow++;
                                 }
                             }
                         ?>
                         <tr>
-                            <td colspan="3">Total:</td>
-                            <td><label id="total">$0</label></td>
+                            <td colspan="4">Total:</td>
+                            <td><label id="total">$<?php echo $total; ?></label></td>
                         </tr>
                     </tbody>
                 </table>
-                <button type="submit">Enviar</button>
+                <center><button type="submit">Enviar</button></center>
             </form>
         </div>
-    
     </div>
 </body>
-<div class="modal fade" id="eliminaModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Atención</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            ¿Desea eliminar el producto?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button id="btn-elimina" type="button" class="btn btn-danger" onclick="elimina()" >Eliminar</button>
-            </div>
-        </div>
-    </div>
-</div>
 <script src="../JS/modifyProduct.js"></script>
 <?php
     include("./Templates/footer.php");

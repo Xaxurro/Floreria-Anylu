@@ -3,13 +3,9 @@ function updatePrice(n) {
     tabla = document.getElementById("table");
     fila = tabla.rows;
 
-    precio = fila[n].getElementsByTagName("td")[1].innerHTML.slice(1);
+    precio = fila[n].getElementsByTagName("td")[2].innerHTML.slice(1);
     cantidad = document.getElementById(n.toString()).value;
-    subtotal = fila[n].getElementsByTagName("td")[3];
-
-    console.log(precio);
-    console.log(cantidad);
-    console.log(subtotal);
+    subtotal = fila[n].getElementsByTagName("td")[4];
 
     subtotal.textContent = "$" + parseInt(precio) * cantidad;
     calculateTotal();
@@ -22,8 +18,8 @@ function calculateTotal(){
     label = document.getElementById("total");
     total = 0;
 
-    for(let x = 0; x < fila.lenght; x++){
-        total += parseInt(fila[x].getElementsByTagName("td")[3]);
+    for(let x = 1; x < fila.length-1; x++){
+        total += parseInt(fila[x].getElementsByTagName("td")[4].innerHTML.slice(1));
     }
     label.innerHTML = "$" + total;
 }
