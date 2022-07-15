@@ -3,38 +3,39 @@ include('../Model/connection.php');
 include('./Templates/header.php');
 include("../Model/config.php");
 
-$id = isset($_GET['id']) ? $_GET['id'] : '';
-$token = isset($_GET['token']) ? $_GET['token'] : '';
+$id = isset($_GET['id']) ? $_GET['id'] : null;
+$token = isset($_GET['token']) ? $_GET['token'] : null;
 
-if($id == '' || $token == ''){
+if($id == null || $token == null){
     echo 'Error al procesar la petición';
     exit;
 }else{
     $token_tmp = hash_hmac('sha1',$id,'KEY_TOKEN' );
     
     if($token == $token_tmp){
-
         $sql    ="SELECT count(id) FROM producto;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
             $sql    ="SELECT * FROM producto where id = $id;";
             $resultProducto = $con->query($sql);
             $consulta = $resultProducto->fetch_assoc();
+
             $nombre = $consulta['nombre'];
             $descripcion = $consulta['descripcion'];
             $stock = $consulta['stock'];
             $precio = $consulta['precio'];
             $estado = $consulta['estado'];
-            $sql    ="SELECT * FROM foto where id_producto=$id LIMIT 1;";
+            
+            $sql = "SELECT * FROM foto where id_producto=$id LIMIT 1;";
             $resultFoto = $con->query($sql);
             $foto = $resultFoto->fetch_assoc();
             if($resultFoto->num_rows > 0){
-                $imagen = $foto['foto']; 
+                $imagen = "data:image/jpg;base64,".base64_encode($foto['foto']); 
             }else{
                 $imagen = '../src/nodisp.png';
             }
         } else {
-            echo 'Error al procesar la petición';
+            echo 'No hay productos disponibles.';
             exit;
         }
     }
@@ -48,12 +49,7 @@ $con->close();
     <div class="row">
         <div class="col-md-6 order-md-1">
             <?php 
-            if($resultFoto->num_rows > 0){
-                $imagen = $foto['foto'];
-                echo '<img src="data:image/jpg;base64,'.base64_encode($imagen).'" class="card-img-top" alt="...">'; 
-            }else{
-                echo '<img src="../src/nodisp.png" class="card-img-top" alt="...">';
-            }
+                echo '<img src="'.$imagen.'" class="card-img-top" alt="...">'; 
             ?>
         </div>
         <div class="col-md-6 order-md-2">

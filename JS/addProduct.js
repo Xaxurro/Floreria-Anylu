@@ -15,5 +15,4 @@ function addProducto(id, token){
             elemento.innerHTML = data.numero
         }
     })
-
 }

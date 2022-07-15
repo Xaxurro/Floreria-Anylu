@@ -14,7 +14,6 @@
         } else {
             echo "Error, contraseña o id de administrador no valido";
         }
-            
         $con->close();
     }
 ?>
