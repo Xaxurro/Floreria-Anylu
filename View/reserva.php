@@ -4,7 +4,11 @@
     if($_POST){
         $cantidad = $_POST["cantidad"];
         $i = 0;
-?>
+        print_r($cantidad);
+        $sql = "UPDATE carrito_producto SET cantidad = $cantidad[$i] WHERE id_carrito = ".$_SESSION["id_carrito"]." ;";
+        $resultCart = $con->query($sql);
+        
+        ?>
 
 <body>
     <div class="container">
