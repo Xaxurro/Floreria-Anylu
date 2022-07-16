@@ -18,22 +18,19 @@ header{
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(17.3px);
-    /* -webkit-backdrop-filter: blur(17.3px); */
     border: 1px solid #ff9cdb;
 }
 #header{
     width: 100%;
     margin: auto;
     box-sizing: border-box;
-    /* padding-top: 50%; */
+
 }
 #logo{
     float: left;
     width: 1%;
     padding: 10px 10px;
     box-sizing: border-box;
-    /* background-image: ./src/logo.png; */
-    /* background-image: url("http://localhost/Floreria-Anylu/src/logo.png") */
 
 }
 #logo .img{
@@ -73,6 +70,9 @@ header #header nav ul li a:hover{
     /* background:  rgb(255, 255, 255); */
     border-radius: 5px;
 }
+#colorNav{
+    background: #ff9cdb;
+}
 /* -------------------body------------------------------------- */
 #cuerpo{
     max-width: 960px;
@@ -88,6 +88,11 @@ header #header nav ul li a:hover{
 #boton{
     background-color: #e78be7;
     border-color: #e78be7;
+}
+#Carousel{
+    border-radius: 16px;
+    width: 1024px;
+    height: 768px;
 }
 /* -------------------Footer------------------------------------- */
 
@@ -119,4 +124,7 @@ fieldset{
   padding: 10px;
   box-sizing: content-box;
   align-items: center;
+}
+img{
+    border-radius: 16px;
 }
