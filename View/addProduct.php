@@ -27,12 +27,20 @@
         $sql = "SELECT id_producto FROM carrito_producto WHERE id_carrito = $id_carrito;";
         $result = $con->query($sql);
         if($result->num_rows > 0){
-            header("Location: ./checkout.php");
+            if(isset($_POST['buy'])){
+                header("Location: ./checkout.php");
+            }else if(isset($_POST['add'])){
+                header("Location: ./catalogo.php");
+            }   
         }
         $sql = "INSERT INTO carrito_producto VALUES ($id_carrito, $id_producto, $cantidad);";
         if($con->query($sql)){
             echo "Se insertaron los datos correctamente";
-            header("Location: ./catalogo.php");
+            if(isset($_POST['buy'])){
+                header("Location: ./checkout.php");
+            }else if(isset($_POST['add'])){
+                header("Location: ./catalogo.php");
+            }
         } else {
             echo "Error al Insertar Datos";
         }

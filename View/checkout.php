@@ -7,6 +7,7 @@
     <div class="container">
         <div class="table-responsive">
             <?php
+                $_SESSION["total"] = 0;
                 $sql = "SELECT id_producto, cantidad FROM carrito_producto WHERE id_carrito = ".$_SESSION["id_carrito"].";";
                 $resultCart = $con->query($sql);
                 if($resultCart->num_rows > 0){
@@ -25,7 +26,6 @@
                         <tbody>
                         <?php
                     $nRow = 1;
-                    $_SESSION["total"] = 0;
                     while($row = $resultCart->fetch_assoc()){
                         $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
                         $resultProducto = $con->query($sql);

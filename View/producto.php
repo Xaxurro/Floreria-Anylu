@@ -62,8 +62,8 @@
                 <form action="addProduct.php" method="post">
                     <input type="hidden" name="id" value="<?php echo $id;?>">
                     <input type="number" name="cantidad" id="cantidad" min="1" value="1"><br><br>
-                    <a href="checkout.php" ><button class="btn btn-primary" type="button">Comprar ahora</button></a>
-                    <button class="btn btn-outline-primary" type="submit">Añadir al carrito</button>
+                    <button class="btn btn-primary" type="submit" name="buy">Comprar ahora</button></a>
+                    <button class="btn btn-outline-primary" type="submit" name="add">Añadir al carrito</button>
                 </form>
             </div>
         </div>
