@@ -1,48 +1,39 @@
 <?php
-    session_start();
     include("./Templates/header.php");
-    include("../Model/token.php");
 
-
-    
     if($_POST){
-        $sql = "SELECT id_producto, cantidad FROM carrito_producto WHERE id_carrito = ".$_SESSION["id_carrito"].";";
-        $resultCart = $con->query($sql);
-        if($resultCart->num_rows > 0){
-            $nRow = 1;
-            while($row = $resultCart->fetch_assoc()){
-                $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
-                $resultProducto = $con->query($sql);
-                if($producto = $resultProducto->fetch_assoc()){
-                    echo "<tr>
-                        <td>".$producto["nombre"]."</td>
-                        <td>$".$producto["precio"]."</td>
-                        <td>$".($row["cantidad"] * $producto["precio"])."</td>
-                    </tr>";
-                }
-            }
-        } 
-        $nombre = $_POST['nombre'];
-        $rut = $_POST['rut'];
-        $correo = $_POST['email'];
-        $telefono = $_POST['telefono'];
-        $sql = "INSERT INTO reservas (rut, nombre, correo, telefono, id_producto, nombre_producto, cantidad_producto, valor) VALUES ('$RUT','$nombre','$correo','$telefono','".$producto["id_producto"]."','".$producto["nombre"]."','".$producto["cantidad"]."', 5);";
-        if(!($con->query($sql))) {
+        $nombre = $_POST['name'];
+        $correo = $_POST['mail'];
+        $telefono = $_POST['phone'];
+        $dia = $_POST['date'];
+        $hora = $_POST['hour'];
+        $descripcion = $_POST['description'];
+        $sql = "INSERT INTO visita(nombre, correo, telefono, descripcion, id_carrito, dia, hora) VALUES ('$nombre', '$correo', '$telefono', '$descripcion', ".$_SESSION["id_carrito"].", '$dia', '$hora');";
+        if($con->query($sql)) {
+            unset($_SESSION["user"]);
+            header("Location: index.php");
+        } else {
             echo "No se inserto<br><br>";
         }
     }
-
 ?>
 
 <body>
     <form method="POST" action="form.php">
-        <h1>INGRESE SUS DATOS</h1>
-        <a>NOMBRE: <input type="text" name="nombre" maxlength="255"> </input> </a>
-        <a>RUT: <input type="text" name="rut" maxlength="255"> </input> </a>
-        <a>CORREO: <input type="text" name="email" maxlength="255"> </input> </a>
-        <a>TELEFONO: <input type="text" name="telefono" maxlength="255"> </input> </a>
-        
-        <button type="submit" value="Enviar"></button>
+        <center><h1>INGRESE SUS DATOS</h1><br>
+        <label for="name">Nombre:</label><br>
+        <input type="text" id="name" name="name" placeholder="Nombre Apellido" required><br><br>
+        <label for="phone">Telefono:</label><br>
+        <input type="text" name="phone" maxlength="255" required></input><br><br>
+        <label for="mail">Correo:</label><br>
+        <input type="mail" id="mail" name="mail" placeholder="Example@example.com" required><br><br>
+        <label for="date">Selecciona un dia para su visita!</label><br>
+        <input type="date" id="date" min="<?php echo date('Y-m-d')?>" name="date" required><br><br>
+        <label for="hour">Selecciona la hora de tu visita!</label><br>
+        <input type="time" id="hour" name="hour" required><br><br>
+        <label for="description">Descripcion:</label><br>
+        <textarea name="description" id="description" name="description" cols="50" rows="10"></textarea><br>
+        <button type="submit" value="Enviar">Enviar</button></center>
     </form>
 </body>
 <?php

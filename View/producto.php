@@ -1,6 +1,5 @@
 <?php
     include('./Templates/header.php');
-    include('../Model/token.php');
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     $token = isset($_GET['token']) ? $_GET['token'] : null;
@@ -43,7 +42,7 @@
 ?>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-
+<section id="cuerpo">
 <div class="container">
     <div class="row">
         <div class="col-md-6 order-md-1">
@@ -59,17 +58,17 @@
                 <?php echo $descripcion; ?>
             </p>
             <div class="d-grid gap-3 col-10 mx-auto">
-                <form action="addProduct.php" method="post">
+                <form action="addProduct.php#productos" method="post">
                     <input type="hidden" name="id" value="<?php echo $id;?>">
                     <input type="number" name="cantidad" id="cantidad" min="1" value="1"><br><br>
-                    <a href="checkout.php" ><button class="btn btn-primary" type="button">Comprar ahora</button></a>
-                    <button class="btn btn-outline-primary" type="submit">Añadir al carrito</button>
+                    <button class="btn btn-primary" type="submit" name="buy">Comprar ahora</button></a>
+                    <button class="btn btn-outline-primary" type="submit" name="add">Añadir al carrito</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-<script src="../JS/addProduct.js"></script>
+</section>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <?php 

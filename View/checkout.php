@@ -1,58 +1,62 @@
 <?php
     include("./Templates/header.php");
-    include("../Model/token.php");
 ?>
 
 <body>
     <div class="container">
         <div class="table-responsive">
-            <form action="reserva.php" method="post">
-                <table class="table" id="table">
-                    <thead>
-                        <tr>
-                            <th>Opcion</th>
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Cantidad</th>
-                            <th>Subtotal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <?php
+                $total = 0;
+                $sql = "SELECT id_producto, cantidad FROM carrito_producto WHERE id_carrito = ".$_SESSION["id_carrito"].";";
+                $resultCart = $con->query($sql);
+                if($resultCart->num_rows > 0){
+                    ?><center><input type="text" id="filter" onkeyup="filterTable()" placeholder="Nombre del producto a buscar..."></center><br>
+                    <form action="reserva.php" method="post">
+                    <table class="table" id="table">
+                        <thead>
+                            <tr>
+                                <th>Opcion</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Cantidad</th>
+                                <th>Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <?php
-                            $sql = "SELECT id_producto, cantidad FROM carrito_producto WHERE id_carrito = ".$_SESSION["id_carrito"].";";
-                            $resultCart = $con->query($sql);
-                            if($resultCart->num_rows > 0){
-                                $nRow = 1;
-                                $total = 0;
-                                while($row = $resultCart->fetch_assoc()){
-                                    $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
-                                    $resultProducto = $con->query($sql);
-                                    if($producto = $resultProducto->fetch_assoc()){
-                                        echo "<tr>
-                                            <td><a href='deleteProduct.php?id=".$row["id_producto"]."'><strong>Eliminar</strong></a></td>
-                                            <td>".$producto["nombre"]."</td>
-                                            <td>$".$producto["precio"]."</td>
-                                            <td><input type='number' name='a' id='".$nRow."' min='1' max='10' value='".$row["cantidad"]."' onchange='updatePrice($nRow)'></td>
-                                            <td>$".($row["cantidad"] * $producto["precio"])."</td>
-                                        </tr>";
-                                        $_SESSION["total"] = $total += (int)$producto["precio"] * (int)$row["cantidad"];
-                                    }
-                                    $nRow++;
+                            $nRow = 1;
+                            while($row = $resultCart->fetch_assoc()){
+                                $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
+                                $resultProducto = $con->query($sql);
+                                if($producto = $resultProducto->fetch_assoc()){
+                                    ?><tr>
+                                        <td><a href='deleteProduct.php?id=<?php echo $row["id_producto"];?>'><strong>Eliminar</strong></a></td>
+                                        <td><?php echo $producto["nombre"]?></td>
+                                        <td>$<?php echo $producto["precio"]?></td>
+                                        <td><input type='number' name="cantidad[]" id='<?php echo $nRow;?>' min='1' max='10' value='<?php echo $row["cantidad"]?>' onchange='updatePrice(<?php echo $nRow?>)'></td>
+                                        <td>$<?php echo ($row["cantidad"] * $producto["precio"]);?></td>
+                                        <input type="hidden" name="id_producto[]" value="<?php echo $row["id_producto"];?>">
+                                    </tr><?php 
+                                    $total += (int)$row["cantidad"] * (int)$producto["precio"];
                                 }
+                                $nRow++;
                             }
-                        ?>
-                        <tr>
-                            <td colspan="4">Total:</td>
-                            <td><label id="total">$<?php echo $total; ?></label></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <center><button type="submit">Enviar</button></center>
-            </form>
+                        ?></tbody>
+                        </table><br>
+                        <label id="total"><center><strong>Total: $<?php echo $total;?></strong></center></label><br>
+                        <center><button type="submit">Enviar</button></center>
+                        </form>
+                    <?php
+                } else {
+                    $total = 0;
+                    ?><center>No hay productos asociados al carrito.</center><?php
+                }
+            ?>
         </div>
     </div>
 </body>
 <script src="../JS/modifyProduct.js"></script>
+<script src="../JS/filterTable.js"></script>
 <?php
     include("./Templates/footer.php");
 ?>

@@ -34,14 +34,14 @@
                 $sql = "SELECT * FROM foto WHERE id_producto = $id_producto;";
                 $result = $con->query($sql);
                 if($result->num_rows > 0){
-                    echo "<center><table>
+                    ?><center><table>
                     <tr>
                         <th>ID</th>
                         <th>Foto</th>
                         <th>Opciones</th>
-                    </tr>";
+                    </tr><?php
                     while ($row = $result->fetch_assoc()) {
-                        echo "
+                        ?>
                         <tr>
                             <td>".$row["id_foto"]."</td>
                             <td><img height='125px' width='125px' src='data:image/jpg;base64,".base64_encode($row["foto"])."'></td>
@@ -54,11 +54,11 @@
                             <a href='deleteImg.php?id_producto=".$row["id_producto"]."&id_foto=".$row["id_foto"]."'>Eliminar</a>
                             </td>
                         </tr>
-                        ";
+                        <?php
                     }
-                    echo "</table></center>";
+                    ?></table></center><?php
                 } else {
-                    echo "<center><strong>No hay fotos asociadas al producto ".$id_producto."</strong></center>";
+                    ?><center><strong>No hay fotos asociadas al producto ".$id_producto."</strong></center><?php
                 }
             ?>
         </div>
