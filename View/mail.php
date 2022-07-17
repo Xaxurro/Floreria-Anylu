@@ -6,12 +6,11 @@
         $phone = $_POST["Phone"];
         $date = $_POST["Date"];
         $hour = $_POST["Hour"];
-        if (!empty($date)){
-            $sql = "INSERT INTO visita(nombre, correo, telefono, id_carrito, dia, hora) VALUES ('$name', '$mail', '$phone', 0, '$date', '$hour');";
-            if (!($con -> query($sql))){
-                echo "Hubo un problema intentelo denuevo.";
-            }
+        $sql = "INSERT INTO visita(nombre, correo, telefono, id_carrito, dia, hora) VALUES ('$name', '$mail', '$phone', 0, '$date', '$hour');";
+        if (!($con -> query($sql))){
+            echo "Hubo un problema intentelo denuevo.";
         }
+        header("Location: index.php");
     }
 ?>
 <fieldset>
@@ -19,15 +18,17 @@
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <br>
         <label for="name">Nombre:</label><br>
-        <input type="text" id="name" name="Name" placeholder="Nombre Apellido"> <br><br>
+        <input type="text" id="name" name="Name" placeholder="Nombre Apellido" required> <br><br>
         <label for="mail">Correo:</label> <br>
-        <input type="mail" id = "mail" name="Mail" placeholder="Example@example.com"><br><br>
+        <input type="mail" id = "mail" name="Mail" placeholder="Example@example.com" required><br><br>
         <label for="Phone">Telefono:</label><br>
         <input type="text" name="Phone" maxlength="255" required></input><br><br>
         <label for="date">Selecciona un dia para su visita!</label><br>
         <input type="date" id = "date" min="<?php echo date('Y-m-d')?>" name="Date"><br><br>
         <label for="hour">Selecciona la hora de tu visita!</label><br>
         <input type="time" id = "hour" name="Hour"> <br> <br>
+        <label for="description">Descripcion:</label><br>
+        <textarea name="description" id="description" name="description" cols="50" rows="10"></textarea><br>
         <input type="submit" value="Agendar!"><br><br>
 
     </form>

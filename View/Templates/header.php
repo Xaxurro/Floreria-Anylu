@@ -21,10 +21,10 @@
 
     if(!isset($_SESSION["user"])){
         $_SESSION["user"] = hash_hmac('sha1', date("l jS F Y H:i:s"), KEY_TOKEN);
-        $_SESSION["id_carrito"] = getCartID($con, $_SESSION["user"]);
     }
+    $_SESSION["id_carrito"] = getCartID($con, $_SESSION["user"]);
 
-    $sql = "SELECT count(id_producto) as cantidad FROM carrito_producto WHERE id_carrito = (SELECT id_carrito from carrito WHERE usuario = '".$_SESSION["user"]."');";
+    $sql = "SELECT count(id_producto) AS cantidad FROM carrito_producto WHERE id_carrito = (SELECT id_carrito FROM carrito WHERE usuario = '".$_SESSION["user"]."');";
     $resultProducto = $con->query($sql);
     if($producto = $resultProducto->fetch_assoc()){
         $cantidad = $producto["cantidad"];

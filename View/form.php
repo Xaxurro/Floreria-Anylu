@@ -7,7 +7,8 @@
         $telefono = $_POST['phone'];
         $dia = $_POST['date'];
         $hora = $_POST['hour'];
-        $sql = "INSERT INTO visita(nombre, correo, telefono, id_carrito, dia, hora) VALUES ('$nombre', '$correo', '$telefono', ".$_SESSION["id_carrito"].", '$dia', '$hora');";
+        $descripcion = $_POST['description'];
+        $sql = "INSERT INTO visita(nombre, correo, telefono, descripcion, id_carrito, dia, hora) VALUES ('$nombre', '$correo', '$telefono', '$descripcion', ".$_SESSION["id_carrito"].", '$dia', '$hora');";
         if($con->query($sql)) {
             unset($_SESSION["user"]);
             header("Location: index.php");
@@ -30,6 +31,8 @@
         <input type="date" id="date" min="<?php echo date('Y-m-d')?>" name="date" required><br><br>
         <label for="hour">Selecciona la hora de tu visita!</label><br>
         <input type="time" id="hour" name="hour" required><br><br>
+        <label for="description">Descripcion:</label><br>
+        <textarea name="description" id="description" name="description" cols="50" rows="10"></textarea><br>
         <button type="submit" value="Enviar">Enviar</button></center>
     </form>
 </body>

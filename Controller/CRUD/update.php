@@ -50,7 +50,7 @@
             <label for="estado">Disponible</label>
             
             <input type="radio" name="estado" id="estado" value="0" <?php if($_GET["estado"] == 0){echo "checked";}?>>
-            <label for="estado">No Disponible</label>
+            <label for="estado">No Disponible</label><br><br>
             
             <button type="submit" name="id" value="<?php echo $id?>">Modificar</button>
         </form>

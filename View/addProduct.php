@@ -14,7 +14,7 @@
             if(isset($_POST['buy'])){
                 header("Location: ./checkout.php");
             }else if(isset($_POST['add'])){
-                header("Location: ./catalogo.php");
+                header("Location: ./catalogo.php#productos");
             }   
         }
         $sql = "INSERT INTO carrito_producto VALUES (".$_SESSION["id_carrito"].", $id_producto, $cantidad);";

@@ -1,4 +1,4 @@
-function filterTable() {
+function filterTable(n) {
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("filter");
     filter = input.value.toUpperCase();
@@ -6,7 +6,7 @@ function filterTable() {
     tr = table.getElementsByTagName("tr");
 
     for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[1];
+        td = tr[i].getElementsByTagName("td")[n];
         if (td) {
             txtValue = td.textContent || td.innerText;
             if (txtValue.toUpperCase().indexOf(filter) > -1) {

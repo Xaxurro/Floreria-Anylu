@@ -39,12 +39,13 @@ CREATE TABLE admin(
 
 CREATE TABLE visita(
     id_visita int(7),
-    nombre VARCHAR(70),
-    correo VARCHAR(50),
-    telefono VARCHAR(15),
+    nombre varchar(70),
+    correo varchar(50),
+    telefono varchar(15),
+    descripcion varchar(500),
     id_carrito int(7),
     dia DATE,
-    hora VARCHAR (10)
+    hora varchar(10)
 );
 
 ALTER TABLE producto
@@ -81,6 +82,9 @@ ALTER TABLE foto
 ADD CONSTRAINT FK_foto_producto FOREIGN KEY (id_producto) REFERENCES producto(id);
 
 
+
+INSERT INTO admin VALUES (1, '1', '1');
+INSERT INTO carrito VALUES (0, '');
 
 INSERT INTO producto(nombre, descripcion, stock, precio, estado) VALUES ('hola', 'holas', 21, 160, 1);
 INSERT INTO producto(nombre, descripcion, stock, precio, estado) VALUES ('si', 'epico', 52, 690, 1);
