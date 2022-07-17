@@ -13,6 +13,9 @@ function sortTable(n, number) {
             x = rows[i].getElementsByTagName("TD")[n];
             y = rows[i + 1].getElementsByTagName("TD")[n];
 
+            console.log(x);
+            console.log(y);
+
             if (dir == 1) {
                 if (number){
                     if (parseInt(x.innerHTML.toLowerCase()) > parseInt(y.innerHTML.toLowerCase())) {
