@@ -1,8 +1,30 @@
 <?php
     include("../Model/connection.php");
+    include("../Model/token.php");
     session_start();
+    
+    function getCartID($con, $user){
+        $sql = "SELECT id_carrito FROM carrito WHERE usuario = '$user';";
+        $result = $con->query($sql);
+        if($result->num_rows > 0){
+            $row = $result->fetch_assoc();
+            return $row["id_carrito"];
+        } else {
+            $sql = "INSERT INTO carrito(usuario) VALUES('$user');";
+            if($con->query($sql)){
+                return getCartID($con, $user);
+            } else {
+                echo "Error al Insertar Datos";
+            }
+        }
+    }
 
-    $sql = "SELECT count(id_producto) as cantidad FROM carrito_producto WHERE id_carrito = (SELECT id_carrito from carrito WHERE usuario = '".$_COOKIE["user"]."');";
+    if(!isset($_SESSION["user"])){
+        $_SESSION["user"] = hash_hmac('sha1', date("l jS F Y H:i:s"), KEY_TOKEN);
+        $_SESSION["id_carrito"] = getCartID($con, $_SESSION["user"]);
+    }
+
+    $sql = "SELECT count(id_producto) as cantidad FROM carrito_producto WHERE id_carrito = (SELECT id_carrito from carrito WHERE usuario = '".$_SESSION["user"]."');";
     $resultProducto = $con->query($sql);
     if($producto = $resultProducto->fetch_assoc()){
         $cantidad = $producto["cantidad"];
@@ -16,6 +38,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../css/main.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../src/logo.png">
 
     <title>Floreria Anylu</title>
 </head>
@@ -29,7 +52,7 @@
             <nav>
                 <ul>
                     <li><a href="index.php"id="colorHeader" >Inicio</a></li>
-                    <li><a href="./catalogo.php" id="colorHeader">Catalogo</a></li>
+                    <li><a href="./catalogo.php#productos" id="colorHeader">Catalogo</a></li>
                     <li><a href="./mail.php" id="colorHeader">Agenda tu visita!</a></li>
                     <li><a href="./login.php" id="colorHeader"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg></a></li>
                     <li><a href="./checkout.php" id="colorHeader"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">

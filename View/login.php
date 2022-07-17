@@ -1,12 +1,10 @@
 <?php
     include("./Templates/header.php");
-    $id = $password = "";
     if($_POST){
-        $id = $_POST['id'];
+        $_SESSION['id'] = $id = $_POST['id'];
         $password = $_POST['password'];
-        $_SESSION['id']=$id;
         
-        $sql ="SELECT * FROM admin WHERE id_admin='$id' and contraseña='$password';";
+        $sql ="SELECT * FROM admin WHERE id = $id AND contraseña = $password;";
         $result = $con -> query($sql);
         
         if ($result-> num_rows > 0){

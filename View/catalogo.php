@@ -1,6 +1,5 @@
 <?php
     include("./Templates/header.php");
-    include('../Model/token.php');
 ?>
 
     
@@ -27,7 +26,7 @@
         </div>
     </div>
 <br>
-<h1 id="Productos"><i><b> Productos</b></i></h1> <br>
+<h1 id="Productos"><i><b>Productos</b></i></h1> <br>
 <br>
 <div class="container">
     <div class="row" id="productos">
@@ -42,23 +41,24 @@
                 $precio = $consulta['precio'];
                 $estado = $consulta['estado'];
                 $id = $consulta['id'];
-                echo '<div class="card" style="width: 18rem;">';
+                ?><div class="card" style="width: 18rem;"><?php
 
-                $sql    ="SELECT * FROM foto where id_producto = $id LIMIT 1;";
+                $sql = "SELECT * FROM foto where id_producto = $id LIMIT 1;";
                 $resultFoto = $con->query($sql);
                 $foto = $resultFoto->fetch_assoc();
+                ?><a href="producto.php?id=<?php echo $id;?>&token=<?php echo hash_hmac('sha1', $id, KEY_TOKEN);?>"><?php
                 if($resultFoto->num_rows == 1){
-                    echo '<img src="data:image/jpg;base64,'.base64_encode($foto['foto']).'" class="card-img-top" alt="...">';
+                    ?><img src="data:image/jpg;base64,<?php base64_encode($foto['foto']);?>" class="card-img-top" href="" alt="..."><?php
                 }else{
-                    echo '<img src="../src/nodisp.png" class="card-img-top" alt="...">';
+                    ?><img src="../src/nodisp.png" class="card-img-top" href="" alt="..."><?php
                 }
-                echo '<div class="card-body">
-                        <h5 class="card-title">'.$nombre.'</h5>
-                        <p class="card-text">'.$descripcion.'</p>
-                        <p class="card-text">$'.$precio.'</p>
-                        <a  href="producto.php?id='.$id.'& token='.hash_hmac('sha1', $id, KEY_TOKEN).'"  class="btn btn-primary id="boton" >Ver más</a>
+                ?></a><div class="card-body">
+                        <h5 class="card-title"><?php echo $nombre;?></h5>
+                        <p class="card-text"><?php echo $descripcion;?></p>
+                        <p class="card-text">$<?php echo $precio;?></p>
+                        <a href="producto.php?id=<?php echo $id;?>&token=<?php echo hash_hmac('sha1', $id, KEY_TOKEN);?>" class="btn btn-primary" id="boton" >Ver más</a>
                     </div>
-                </div>';
+                </div><?php
             }
         ?>
     </div>

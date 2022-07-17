@@ -1,10 +1,5 @@
 <?php 
-    include("./Templates/header.php"); 
-    include("../Model/token.php");
-
-    if(!isset($_COOKIE["user"])){
-        setcookie("user", hash_hmac('sha1', date("l jS F Y H:i:s"), KEY_TOKEN), time() + 31536000, "/");
-    }
+    include("./Templates/header.php");
 ?>
 <section id="cuerpo">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">

@@ -1,13 +1,15 @@
 <?php
     include("./Templates/header.php");
-    include("../Model/token.php");
     if($_POST){
         $cantidad = $_POST["cantidad"];
+        $producto = $_POST["id_producto"];
+        for($i = 0; $i < count($cantidad); $i++){
+            $sql = "UPDATE carrito_producto SET cantidad = ".$cantidad[$i]." WHERE id_carrito = ".$_SESSION["id_carrito"]." AND id_producto = ".$producto[$i].";";
+            if(!($con->query($sql))){
+                echo "No se modifico<br><br>";
+            }
+        }
         $i = 0;
-        print_r($cantidad);
-        $sql = "UPDATE carrito_producto SET cantidad = $cantidad[$i] WHERE id_carrito = ".$_SESSION["id_carrito"]." ;";
-        $resultCart = $con->query($sql);
-        
         ?>
 
 <body>
@@ -27,6 +29,7 @@
                         <?php
                             $sql = "SELECT id_producto, cantidad FROM carrito_producto WHERE id_carrito = ".$_SESSION["id_carrito"].";";
                             $resultCart = $con->query($sql);
+                            $total = 0;
                             if($resultCart->num_rows > 0){
                                 while($row = $resultCart->fetch_assoc()){
                                     $sql = "SELECT nombre, precio FROM producto WHERE id = ".$row["id_producto"].";";
@@ -37,23 +40,26 @@
                                             <td><?php echo $producto["nombre"];?></td>
                                             <td>$<?php echo $producto["precio"];?></td>
                                             <td><?php echo $cantidad[$i];?></td>
-                                            <td>$<?php echo ($cantidad[$i] * $producto["precio"]); $i++;?></td>
+                                            <td>$<?php echo ($cantidad[$i] * $producto["precio"]);?></td>
                                         </tr>
                                         <?php
-                                        $_SESSION["total"] += (int)$producto["precio"] * (int)$row["cantidad"];
+                                        $total += $cantidad[$i] * (int)$producto["precio"];
+                                        $i++;
                                     }
                                 }
                             }
-                        ?>    
+                        ?>
                     </tbody>
                 </table><br>
                 <br>
-                <label id="total"><center><strong>Total: $<?php echo $_SESSION["total"]; ?></strong></center></label><br>
-                <center><button type="submit">Reservar </button></center>
+                <label><center><strong>Total: $<?php echo $total; ?></strong></center></label><br>
+
+                <center><button type="submit">Reservar</button></center>
             </form>
         </div>
     </div>
 </body>
+<script src="../JS/filterTable.js"></script>
 <?php
     } else {
         echo "Se produjo un error al procesar la reserva";

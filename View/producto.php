@@ -1,6 +1,5 @@
 <?php
     include('./Templates/header.php');
-    include('../Model/token.php');
 
     $id = isset($_GET['id']) ? $_GET['id'] : null;
     $token = isset($_GET['token']) ? $_GET['token'] : null;
@@ -59,7 +58,7 @@
                 <?php echo $descripcion; ?>
             </p>
             <div class="d-grid gap-3 col-10 mx-auto">
-                <form action="addProduct.php" method="post">
+                <form action="addProduct.php#productos" method="post">
                     <input type="hidden" name="id" value="<?php echo $id;?>">
                     <input type="number" name="cantidad" id="cantidad" min="1" value="1"><br><br>
                     <button class="btn btn-primary" type="submit" name="buy">Comprar ahora</button></a>
