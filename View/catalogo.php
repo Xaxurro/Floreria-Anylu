@@ -2,9 +2,6 @@
     include("./Templates/header.php");
 ?>
 
-    
-</head>
-
 <section id="cuerpo">
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -12,7 +9,7 @@
                 <img src="../src/flores.jpg" class="d-block w-100" alt="flor1" id="Carousel">
             </div>
             <div class="carousel-item">
-                <img src="../src/flores2.jpg" class="d-block w-100" alt="flor1" id="Carousel">
+                <img src="../src/flores2.jpg" class="d-block w-100" alt="flor2" id="Carousel">
             </div>
             <div class="carousel-item">
                 <img src="../src/flores3.jpg" class="d-block w-100" alt="flor3" id="Carousel">
@@ -33,32 +30,29 @@
         <?php
             $sql    ="SELECT * FROM producto  WHERE estado=1";
             $resultProducto = $con->query($sql);
-            
+            $x = 0;
             while($consulta = $resultProducto->fetch_assoc()){
-                $nombre = $consulta['nombre'];
-                $descripcion = $consulta['descripcion'];
-                $stock = $consulta['stock'];
-                $precio = $consulta['precio'];
-                $estado = $consulta['estado'];
-                $id = $consulta['id'];
                 ?><div class="card" style="width: 18rem;"><?php
-
-                $sql = "SELECT * FROM foto where id_producto = $id LIMIT 1;";
+                $sql = "SELECT * FROM foto where id_producto = ".$consulta['id']." LIMIT 1;";
                 $resultFoto = $con->query($sql);
                 $foto = $resultFoto->fetch_assoc();
-                ?><a href="producto.php?id=<?php echo $id;?>&token=<?php echo hash_hmac('sha1', $id, KEY_TOKEN);?>"><?php
+                ?><a href="producto.php?id=<?php echo $consulta['id'];?>&token=<?php echo hash_hmac('sha1', $consulta['id'], KEY_TOKEN);?>"><?php
                 if($resultFoto->num_rows == 1){
-                    ?><img src="data:image/jpg;base64,<?php base64_encode($foto['foto']);?>" class="card-img-top" href="" alt="..."><?php
+                    ?><img src="data:image/jpg;base64,<?php echo base64_encode($foto['foto']);?>" class="card-img-top" width="270" height="270"><?php
                 }else{
-                    ?><img src="../src/nodisp.png" class="card-img-top" href="" alt="..."><?php
+                    ?><img src="../src/nodisp.png" class="card-img-top" alt="No Disponible" width="270" height="270"><?php
                 }
                 ?></a><div class="card-body">
-                        <h5 class="card-title"><?php echo $nombre;?></h5>
-                        <p class="card-text"><?php echo $descripcion;?></p>
-                        <p class="card-text">$<?php echo $precio;?></p>
-                        <a href="producto.php?id=<?php echo $id;?>&token=<?php echo hash_hmac('sha1', $id, KEY_TOKEN);?>" class="btn btn-primary" id="boton" >Ver más</a>
+                        <h5 class="card-title"><?php echo $consulta['nombre'];?></h5>
+                        <p class="card-text"><?php echo $consulta['descripcion'];?></p>
+                        <p class="card-text">$<?php echo $consulta['precio'];?></p>
+                        <a href="producto.php?id=<?php echo $consulta['id'];?>&token=<?php echo hash_hmac('sha1', $consulta['id'], KEY_TOKEN);?>" class="btn btn-primary" id="boton" >Ver más</a>
                     </div>
                 </div><?php
+                $x++;
+                if($x % 3 == 0){
+                    ?><br><br><?php
+                }
             }
         ?>
     </div>

@@ -21,7 +21,6 @@
                 <ul>
                     <li><a href="../Placeholder/indexAdmin.php">Inicio</a></li>
                     <li><a href="../CRUD/crud.php">Gestionar Productos</a></li>
-                    <li><a href="../CRUDVisitas/visits.php">Visitas Agendadas</a></li>
                     <li><a href="../CRUDVisitas/productsReserved.php">Productos Reservados</a></li>
                     <li><a href="../../View/index.php"><b><i>Cerrar sesion</i></b></a></li>
                 </ul>

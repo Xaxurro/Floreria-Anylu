@@ -43,22 +43,22 @@
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
-                            <td>".$row["id_foto"]."</td>
-                            <td><img height='125px' width='125px' src='data:image/jpg;base64,".base64_encode($row["foto"])."'></td>
+                            <td><?php echo $row["id_foto"];?></td>
+                            <td><img height='125px' width='125px' src='data:image/jpg;base64,<?php echo base64_encode($row["foto"]);?>'></td>
                             <td>
                             <form action='updateImg.php' method='post' enctype='multipart/form-data'>
                             <input type='file' name='foto' id='foto' required>
-                            <input type='hidden' name='id_producto' value='".$id_producto."'>
-                            <button type='submit' name='id_foto' value='".$row["id_foto"]."'>Modificar</button>
+                            <input type='hidden' name='id_producto' value='<?php echo $id_producto;?>'>
+                            <button type='submit' name='id_foto' value='<?php echo $row["id_foto"];?>'>Modificar</button>
                             </form>
-                            <a href='deleteImg.php?id_producto=".$row["id_producto"]."&id_foto=".$row["id_foto"]."'>Eliminar</a>
+                            <a href='deleteImg.php?id_producto=<?php echo $row["id_producto"];?>&id_foto=<?php echo $row["id_foto"];?>'>Eliminar</a>
                             </td>
                         </tr>
                         <?php
                     }
                     ?></table></center><?php
                 } else {
-                    ?><center><strong>No hay fotos asociadas al producto ".$id_producto."</strong></center><?php
+                    ?><center><strong>No hay fotos asociadas al producto <?php echo $id_producto;?></strong></center><?php
                 }
             ?>
         </div>
