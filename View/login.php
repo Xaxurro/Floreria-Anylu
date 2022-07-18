@@ -1,10 +1,10 @@
 <?php
     include("./Templates/header.php");
     if($_POST){
-        $_SESSION['id'] = $id = $_POST['id'];
+        $_SESSION['user'] = $Usuario = $_POST['user'];
         $password = $_POST['password'];
         
-        $sql ="SELECT * FROM admin WHERE id = $id AND contraseña = $password;";
+        $sql ="SELECT * FROM admin WHERE usuario = '$Usuario' AND contraseña = '$password';";
         $result = $con -> query($sql);
         
         if ($result-> num_rows > 0){
@@ -20,8 +20,8 @@
         <center>
             <br>
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-                <label for="id">ID:</label><br>
-                <input type="text" name="id" maxlength="255"><br><br>
+                <label for="user">Usuario:</label><br>
+                <input type="text" name="user" maxlength="255"><br><br>
                 
                 <label for="password">Contraseña:</label><br>
                 <input type="password" name="password" maxlength="24"><br><br>

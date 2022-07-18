@@ -19,11 +19,15 @@
         }
         $sql = "INSERT INTO carrito_producto VALUES (".$_SESSION["id_carrito"].", $id_producto, $cantidad);";
         if($con->query($sql)){
-            echo "Se insertaron los datos correctamente";
-            if(isset($_POST['buy'])){
-                header("Location: ./checkout.php");
-            }else if(isset($_POST['add'])){
-                header("Location: ./catalogo.php#productos");
+            $sql = "UPDATE producto SET stock = stock - $cantidad WHERE id = $id_producto";
+            if($con->query($sql)){
+                if(isset($_POST['buy'])){
+                    header("Location: ./checkout.php");
+                }else if(isset($_POST['add'])){
+                    header("Location: ./catalogo.php#productos");
+                }
+            } else {
+                echo "Error al Actualizar Datos";
             }
         } else {
             echo "Error al Insertar Datos";
