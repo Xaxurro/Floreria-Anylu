@@ -10,7 +10,7 @@
                 $sql = "SELECT id_producto, cantidad FROM carrito_producto WHERE id_carrito = ".$_SESSION["id_carrito"].";";
                 $resultCart = $con->query($sql);
                 if($resultCart->num_rows > 0){
-                    ?><center><input type="text" id="filter" onkeyup="filterTable()" placeholder="Nombre del producto a buscar..."></center><br>
+                    ?><center><input type="text" id="filter" onkeyup="filterTable(1)" placeholder="Nombre del producto a buscar..."></center><br>
                     <form action="reserva.php" method="post">
                     <table class="table" id="table">
                         <thead>

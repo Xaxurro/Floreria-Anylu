@@ -30,7 +30,6 @@
         <?php
             $sql    ="SELECT * FROM producto  WHERE estado=1";
             $resultProducto = $con->query($sql);
-            $x = 0;
             while($consulta = $resultProducto->fetch_assoc()){
                 ?><div class="card" style="width: 18rem;"><?php
                 $sql = "SELECT * FROM foto where id_producto = ".$consulta['id']." LIMIT 1;";
@@ -49,10 +48,6 @@
                         <a href="producto.php?id=<?php echo $consulta['id'];?>&token=<?php echo hash_hmac('sha1', $consulta['id'], KEY_TOKEN);?>" class="btn btn-primary" id="boton" >Ver más</a>
                     </div>
                 </div><?php
-                $x++;
-                if($x % 3 == 0){
-                    ?><br><br><?php
-                }
             }
         ?>
     </div>
