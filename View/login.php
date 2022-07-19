@@ -4,10 +4,11 @@
         $_SESSION['user'] = $Usuario = $_POST['user'];
         $password = $_POST['password'];
         
-        $sql ="SELECT * FROM admin WHERE usuario = '$Usuario' AND contraseña = '$password';";
-        $result = $con -> query($sql);
+        $sql ="SELECT * FROM admin WHERE usuario = '$Usuario' AND contrasena = '$password';";
+
+        $result = $con->query($sql);
         
-        if ($result-> num_rows > 0){
+        if ($result->num_rows > 0){
             header('Location:../Controller/Placeholder/indexAdmin.php');
         } else {
             echo "Error, contraseña o id de administrador no valido";
@@ -32,5 +33,5 @@
         </center>
     </fieldset>
 <?php
-include("./Templates/footer.php"); 
+    include("./Templates/footer.php"); 
 ?>
