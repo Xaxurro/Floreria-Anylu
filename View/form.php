@@ -8,7 +8,7 @@
         $dia = $_POST['date'];
         $hora = $_POST['hour'];
         $descripcion = $_POST['description'];
-        $sql = "INSERT INTO visita(nombre, correo, telefono, descripcion, id_carrito, dia, hora) VALUES ('$nombre', '$correo', '$telefono', '$descripcion', ".$_SESSION["id_carrito"].", '$dia', '$hora');";
+        $sql = "INSERT INTO retiro(nombre, correo, telefono, descripcion, id_carrito, dia, hora) VALUES ('$nombre', '$correo', '$telefono', '$descripcion', ".$_SESSION["id_carrito"].", '$dia', '$hora');";
         if($con->query($sql)) {
             unset($_SESSION["user"]);
             header("Location: index.php");
@@ -27,9 +27,9 @@
         <input type="text" name="phone" maxlength="255" required></input><br><br>
         <label for="mail">Correo:</label><br>
         <input type="mail" id="mail" name="mail" placeholder="Example@example.com" required><br><br>
-        <label for="date">Selecciona un dia para su visita!</label><br>
+        <label for="date">Selecciona un dia para su retiro!</label><br>
         <input type="date" id="date" min="<?php echo date('Y-m-d')?>" name="date" required><br><br>
-        <label for="hour">Selecciona la hora de tu visita!</label><br>
+        <label for="hour">Selecciona la hora de tu retiro!</label><br>
         <input type="time" id="hour" name="hour" required><br><br>
         <label for="description">Descripcion:</label><br>
         <textarea name="description" id="description" name="description" cols="50" rows="10"></textarea><br>

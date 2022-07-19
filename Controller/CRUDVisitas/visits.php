@@ -10,7 +10,7 @@
             <script src="../../JS/SortTable.js"></script>
             <?php
                 $current_day = date('Y-m-d');
-                $sql = "SELECT nombre, hora, correo, telefono, descripcion, id_carrito FROM visita WHERE dia = '$current_day' AND id_carrito = 0 ORDER BY hora;";
+                $sql = "SELECT nombre, hora, correo, telefono, descripcion, id_carrito FROM retiro WHERE dia = '$current_day' AND id_carrito = 0 ORDER BY hora;";
                 $result = $con->query($sql);
                 if($result->num_rows > 0){
                     ?><table>
@@ -40,7 +40,7 @@
                     }
                     ?></table><?php
                 } else {
-                    ?><center><strong>No hay Visitas agendadas para hoy.</center></strong><?php
+                    ?><center><strong>No hay retiros agendados para hoy.</center></strong><?php
                 }
             ?>
         </div>

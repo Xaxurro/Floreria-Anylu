@@ -10,7 +10,7 @@
         <legend><b><i>Productos Reservados:</i></b></legend>
         <div class="table">
             <?php
-                $sql = "SELECT * FROM visita WHERE id_carrito != 0;";
+                $sql = "SELECT * FROM retiro WHERE id_carrito != 0;";
                 $result = $con->query($sql);
                 if($result->num_rows > 0){
                     ?><input type="text" id="filter" onkeyup="filterTable(1)" placeholder="Nombre del cliente a buscar..."><br><br>
@@ -46,7 +46,7 @@
                     while ($row = $result->fetch_assoc()) {
                         ?>
                         <tr>
-                            <td><?php echo $row["id_visita"];?></td>
+                            <td><?php echo $row["id_retiro"];?></td>
                             <td><?php echo $row["nombre"];?></td>
                             <td><?php echo $row["correo"];?></td>
                             <td><?php echo $row["telefono"];?></td>
@@ -72,7 +72,7 @@
                             <td><?php echo $row["dia"];?></td>
                             <td><?php echo $row["hora"];?></td>
                             <td><a href="readProducts.php?id=<?php echo $row["id_carrito"];?>">Ver Productos</a></td>
-                            <td><a href="deleteProduct.php?id=<?php echo $row["id_visita"];?>">Eliminar</a></td><?php
+                            <td><a href="deleteProduct.php?id=<?php echo $row["id_retiro"];?>">Eliminar</a></td><?php
                     }
                     ?></table></center><?php
                 } else {

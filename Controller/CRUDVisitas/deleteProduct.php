@@ -1,7 +1,7 @@
 <?php
     include("../../Model/connection.php");
     if($_GET){
-        $sql = "DELETE FROM visita WHERE id_visita = '".$_GET["id"]."';";
+        $sql = "DELETE FROM retiro WHERE id_retiro = '".$_GET["id"]."';";
         if($con->query($sql)){
             echo "Se elimino Correctamente<br><br>";
         } else {
